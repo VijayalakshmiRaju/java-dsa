@@ -1,8 +1,11 @@
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.Arrays;
 
 public class MissingAndRepeatingElement {
 
-    public static int[] findMissingAndRepeatingElementUsingSorting(int[] arr)
+    public static void findMissingAndRepeatingElementUsingSorting(int[] arr)
     {
         Arrays.sort(arr);
         int n = arr.length;
@@ -36,19 +39,70 @@ public class MissingAndRepeatingElement {
         }
 
         // If no gap found, the missing number is N (e.g., [1,2,3,4,4])
-        if ( missingNumber == 1 )
+        if ( missingNumber == -1 )
         {
             missingNumber = n;
         }
 
-        return new int[] { missingNumber, repeatingNumber };
+        System.out.println("[Sorting Approach]");
+        System.out.println("MISSING NUMBER: " + missingNumber);
+        System.out.println("REPEATING NUMBER: " + repeatingNumber);
+    }
+
+    /**
+     * Approach 2: Mathematical method using Sum & Product equations
+     * Uses BigInteger and BigDecimal to safely handle large numbers
+     */
+    public static void findMissingAndRepeating(int[] arr)
+    {
+        int n = arr.length;
+
+        // Excepted Sum = n(n+1)/2
+        long expectedSum = ((long) n * (n + 1 )) / 2;
+
+        // Expected Product = n!
+        BigInteger expectedProduct = BigInteger.ONE;
+        for ( int i = 1; i <= n; i++ )
+        {
+            expectedProduct = expectedProduct.multiply(BigInteger.valueOf(i));
+        }
+
+        long actualSum = 0;
+        BigInteger actualProduct = BigInteger.ONE;
+        for ( int num : arr )
+        {
+            actualSum += num;
+            actualProduct = actualProduct.multiply(BigInteger.valueOf(num));
+        }
+
+        // Equation 1: diff = y - x
+        long diff = actualSum - expectedSum;
+
+        // Equation 2: ratio = y / x using BigDecimal for precise division
+        BigDecimal actualDecimal = new BigDecimal(actualProduct);
+        BigDecimal excepectedDecimal = new BigDecimal(expectedProduct);
+
+        double ratio = actualDecimal.divide(excepectedDecimal, 10, RoundingMode.HALF_UP).doubleValue();
+
+        // Solve equations:
+        // y - x = diff
+        // y / x = ratio
+        double missing = diff / ( ratio - 1 );
+        double repeating = missing + diff;
+
+        System.out.println("[Sum & Product Approach]");
+        System.out.println("MISSING NUMBER: " + (int) missing);
+        System.out.println("REPEATING NUMBER: " + (int) repeating);
     }
 
     public static void main(String[] args)
     {
         int[] arr = { 2, 3, 2, 1, 5};
-        int[] result = findMissingAndRepeatingElementUsingSorting(arr);
-        System.out.println("MISSING NUMBER: " + result[0]);
-        System.out.println("REPEATING NUMBER: " + result[1]);
+        findMissingAndRepeatingElementUsingSorting(arr.clone());
+        findMissingAndRepeating(arr.clone());
+
+        int[] arr2 = { 2, 3, 2, 1, 4};
+        findMissingAndRepeatingElementUsingSorting(arr2.clone());
+        findMissingAndRepeating(arr2.clone());
     }
 }

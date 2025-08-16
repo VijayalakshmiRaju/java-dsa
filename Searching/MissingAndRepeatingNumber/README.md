@@ -1,4 +1,4 @@
-# Missing and Repeating Element (Sorting Approach)
+# Missing and Repeating Element
 
 This Java program finds the **missing** and **repeating** numbers in an array
 containing integers from `1` to `N`, where exactly one number is missing
@@ -12,12 +12,14 @@ Given an array `arr[]` of size `N` containing numbers from `1` to `N`:
 - One number occurs twice.
 
 Find:
-1. The **missing number**.
-2. The **repeating number**.
+1. The **missing number**
+2. The **repeating number**
 
 ---
 
-## Approach: Sorting
+## Approaches
+
+### 1. Sorting Approach
 1. **Sort** the array.
 2. **Scan once** to detect:
    - **Repeating number:** If `arr[i] == arr[i+1]`
@@ -28,12 +30,21 @@ Find:
 
 ---
 
+### 2. Sum & Product Approach (Mathematical)
+1. Let `x` = missing number, `y` = repeating number.
+2. Compute:
+   - `diff = sum(arr) - expectedSum = y - x`
+   - `ratio = product(arr) / expectedProduct = y / x`
+3. Solve the two equations to find `x` and `y`.
+4. Uses `BigInteger` and `BigDecimal` to handle large numbers safely.
+
+---
+
 ## Complexity Analysis
 
-| Operation        | Time Complexity | Space Complexity |
-|------------------|-----------------|------------------|
-| Sorting array    | O(N log N)      | O(1)             |
-| Single scan      | O(N)            | O(1)             |
-| **Overall**      | **O(N log N)**  | **O(1)**         |
+| Approach               | Time Complexity | Space Complexity | Notes |
+|------------------------|----------------|-----------------|-------|
+| Sorting                | O(N log N)     | O(1)            | Simple, safe for large N |
+| Sum & Product          | O(N)           | O(N) (BigInteger/BigDecimal) | Elegant, may overflow without BigInteger |
 
 ---
