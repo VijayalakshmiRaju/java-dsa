@@ -59,6 +59,16 @@ Find:
 
 ---
 
+### 5. Negative Indexing Approach (In-Place)
+1. Traverse the array:
+   - For each number `num`, negate the value at index `abs(num)-1`.
+   - If that index is already negative → `num` is the repeating number.
+2. After the first pass, scan the array:
+   - The index which remains positive → missing number.
+3. Modifies the input array in-place.
+
+---
+
 ## Complexity Analysis
 
 | Approach               | Time Complexity | Space Complexity | Notes |
@@ -67,6 +77,6 @@ Find:
 | Sum & Product          | O(N)           | O(N) (BigInteger/BigDecimal) | Elegant, handles large N with BigInteger |
 | Hashing (Array)        | O(N)           | O(N)            | Easy linear-time solution, fixed range 1..N |
 | HashMap                | O(N)           | O(N)            | Generalized, works for arbitrary numbers |
-
+| Negative Indexing (In-Place)    | O(N)           | O(1)            | Modifies input, very efficient |
 
 ---

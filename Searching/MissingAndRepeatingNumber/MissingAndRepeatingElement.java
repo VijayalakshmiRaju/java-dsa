@@ -146,6 +146,47 @@ public class MissingAndRepeatingElement {
         System.out.println("REPEATING NUMBER: " + repeating);
     }
 
+    /**
+     * Approach 5: Negative Indexing
+     * Idea:
+     *  - Use the input array itself to mark visited numbers by negating the value
+     *    at the index corresponding to each number.
+     *  - When a number points to an already negative index → it's the repeating number.
+     *  - After marking all numbers, the index which is still positive → the missing number.
+     * Time Complexity: O(N)
+     * Space Complexity: O(1) (in-place)
+     */
+    public static void findMissingAndRepeatingUsingNegativeIndex(int[] arr)
+    {
+        int missing = -1;
+        int repeating = -1;
+
+        // Mark numbers visited by negating the corresponding index
+        for ( int i = 0; i < arr.length; i++ )
+        {
+            int index = Math.abs(arr[i]) - 1;
+
+            if (arr[index] < 0) {
+                // Already negative → repeating number found
+                repeating = Math.abs(arr[i]);
+            } else {
+                // Negate to mark as visited
+                arr[index] = -arr[index];
+            }
+        }
+
+        // Find the missing number (index which is still positive)
+        for ( int i = 0; i < arr.length; i++ )
+        {
+            if ( arr[i] > 0 )
+                missing = i + 1;
+        }
+
+        System.out.println("[Negative Indexing Approach]");
+        System.out.println("MISSING NUMBER: " + missing);
+        System.out.println("REPEATING NUMBER: " + repeating);
+    }
+
     public static void main(String[] args)
     {
         int[] arr = { 2, 3, 2, 1, 5};
@@ -153,11 +194,13 @@ public class MissingAndRepeatingElement {
         findMissingAndRepeating(arr.clone());
         findMissingAndRepeatingUsingHashing(arr.clone());
         findMissingAndRepeatingUsingHashMap(arr.clone());
+        findMissingAndRepeatingUsingNegativeIndex(arr.clone());
 
         int[] arr2 = { 2, 3, 2, 1, 4};
         findMissingAndRepeatingElementUsingSorting(arr2.clone());
         findMissingAndRepeating(arr2.clone());
         findMissingAndRepeatingUsingHashing(arr2.clone());
         findMissingAndRepeatingUsingHashMap(arr2.clone());
+        findMissingAndRepeatingUsingNegativeIndex(arr2.clone());
     }
 }
