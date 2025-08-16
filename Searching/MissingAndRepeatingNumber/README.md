@@ -40,11 +40,33 @@ Find:
 
 ---
 
+### 3. Hashing Approach (Array)
+1. Create a **hash array** of size `N+1`.
+2. Traverse the input array and increment count in hash array.
+3. Traverse hash array:
+   - Count = 0 -> missing number
+   - Count = 2 -> repeating number
+
+---
+
+### 4. HashMap Approach
+1. Create a `HashMap<Integer, Integer>` to store frequency of numbers.
+2. Traverse the array and increment the count in the map.
+3. Traverse numbers from `1` to `N`:
+   - Count = 0 -> missing number
+   - Count = 2 -> repeating number
+4. Works even if the array is not strictly `1..N` or has arbitrary numbers.
+
+---
+
 ## Complexity Analysis
 
 | Approach               | Time Complexity | Space Complexity | Notes |
 |------------------------|----------------|-----------------|-------|
-| Sorting                | O(N log N)     | O(1)            | Simple, safe for large N |
-| Sum & Product          | O(N)           | O(N) (BigInteger/BigDecimal) | Elegant, may overflow without BigInteger |
+| Sorting                | O(N log N)     | O(1)            | Simple, in-place |
+| Sum & Product          | O(N)           | O(N) (BigInteger/BigDecimal) | Elegant, handles large N with BigInteger |
+| Hashing (Array)        | O(N)           | O(N)            | Easy linear-time solution, fixed range 1..N |
+| HashMap                | O(N)           | O(N)            | Generalized, works for arbitrary numbers |
+
 
 ---

@@ -2,6 +2,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MissingAndRepeatingElement {
 
@@ -80,9 +82,9 @@ public class MissingAndRepeatingElement {
 
         // Equation 2: ratio = y / x using BigDecimal for precise division
         BigDecimal actualDecimal = new BigDecimal(actualProduct);
-        BigDecimal excepectedDecimal = new BigDecimal(expectedProduct);
+        BigDecimal expectedDecimal = new BigDecimal(expectedProduct);
 
-        double ratio = actualDecimal.divide(excepectedDecimal, 10, RoundingMode.HALF_UP).doubleValue();
+        double ratio = actualDecimal.divide(expectedDecimal, 10, RoundingMode.HALF_UP).doubleValue();
 
         // Solve equations:
         // y - x = diff
@@ -95,14 +97,67 @@ public class MissingAndRepeatingElement {
         System.out.println("REPEATING NUMBER: " + (int) repeating);
     }
 
+    /**
+     * Approach 3: Hashing
+     */
+    public static void findMissingAndRepeatingUsingHashing(int[] arr) {
+        int n = arr.length;
+        int[] hash = new int[n + 1]; // indices 1..n
+
+        for (int num : arr) {
+            hash[num]++;
+        }
+
+        int missing = -1;
+        int repeating = -1;
+
+        for (int i = 1; i <= n; i++) {
+            if (hash[i] == 0) missing = i;
+            if (hash[i] == 2) repeating = i;
+        }
+
+        System.out.println("[Hashing Approach]");
+        System.out.println("MISSING NUMBER: " + missing);
+        System.out.println("REPEATING NUMBER: " + repeating);
+    }
+
+    /**
+     * Approach 4: Hash Map
+     */
+    public static void findMissingAndRepeatingUsingHashMap(int[] arr)
+    {
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        for (int num : arr )
+        {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+
+        int missing = -1;
+        int repeating = -1;
+        for ( int i = 1; i <= arr.length; i++ )
+        {
+            int count = frequencyMap.getOrDefault(i, 0);
+            if ( count == 0 ) missing = i;
+            if ( count == 2 ) repeating = i;
+        }
+
+        System.out.println("[HashMap Approach]");
+        System.out.println("MISSING NUMBER: " + missing);
+        System.out.println("REPEATING NUMBER: " + repeating);
+    }
+
     public static void main(String[] args)
     {
         int[] arr = { 2, 3, 2, 1, 5};
         findMissingAndRepeatingElementUsingSorting(arr.clone());
         findMissingAndRepeating(arr.clone());
+        findMissingAndRepeatingUsingHashing(arr.clone());
+        findMissingAndRepeatingUsingHashMap(arr.clone());
 
         int[] arr2 = { 2, 3, 2, 1, 4};
         findMissingAndRepeatingElementUsingSorting(arr2.clone());
         findMissingAndRepeating(arr2.clone());
+        findMissingAndRepeatingUsingHashing(arr2.clone());
+        findMissingAndRepeatingUsingHashMap(arr2.clone());
     }
 }
