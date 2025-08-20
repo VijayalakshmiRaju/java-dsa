@@ -37,6 +37,8 @@ public class SearchInAnInfiniteArray {
             // To avoid going beyond array length in finite test case
             if (end >= arr.length) {
                 end = arr.length - 1;
+                start = temp;   // update start before breaking
+                break;
             }
 
             start = temp;
