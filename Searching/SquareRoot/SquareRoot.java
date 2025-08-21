@@ -21,6 +21,9 @@ public class SquareRoot {
     // Optimized Method: Binary Search to find square root
     public static int findSquareRootNaiveBinarySearch(int x)
     {
+        if (x == 0 || x == 1)  // base cases
+            return x;
+        
         long low = 1;
         long high = x / 2; // Optimization: sqrt(x) cannot be > x/2 for x > 1
         long result = -1; // stores floor of sqrt(x)
