@@ -31,10 +31,10 @@ If none of the characters of `s2` are present in `s1`, return an empty string.
 
 ## Time and Auxiliary Space (extra space used)
 
-| Approach      | Time Complexity     | Auxiliary Space | Explanation |
-|---------------|---------------------|-----------------|-------------|
-| Naive         | O(|s1| x |s2|)      | O(1)            | For each char of `s2`, scans entire `s1`. |
-| HashMap       | O(|s1| + |s2|)      | O(|s1|)         | Preprocessing with HashMap, then direct lookup. |
+| Approach | Time Complexity    | Auxiliary Space | Explanation                                     |
+| -------- | ------------------ | --------------- | ----------------------------------------------- |
+| Naive    | O(\|s1\| × \|s2\|) | O(1)            | For each char of `s2`, scans entire `s1`.       |
+| HashMap  | O(\|s1\| + \|s2\|) | O(\|s1\|)       | Preprocessing with HashMap, then direct lookup. |
 
 ---
 
