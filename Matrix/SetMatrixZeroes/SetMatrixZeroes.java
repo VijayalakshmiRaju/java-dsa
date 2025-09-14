@@ -75,107 +75,38 @@ public class SetMatrixZeroes {
     }
 
     public static void main(String[] args) {
-        // Test Case 1: Basic Example
-        int[][] matrix1 = {
-                {1, 1, 1},
-                {1, 0, 1},
-                {1, 1, 1}
+        // Store all test cases in an array of 2D matrices
+        int[][][] testCases = {
+                { {1, 1, 1}, {1, 0, 1}, {1, 1, 1} },     // Basic example
+                { {0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5} }, // Multiple zeros
+                { {1, 2}, {3, 4} },                       // No zeros
+                { {0, 0}, {0, 0} },                       // All zeros
+                { {1, 0, 3} },                            // Single row
+                { {1}, {0}, {3} },                        // Single column
+                { {0} },                                  // 1x1 with zero
+                { {5} }                                   // 1x1 without zero
         };
-        System.out.println("Test Case 1: Basic Example");
-        System.out.println("Original Matrix:");
-        printMatrix(matrix1);
-        setMatrixZero(matrix1);
-        System.out.println("Modified Matrix:");
-        printMatrix(matrix1);
-        System.out.println();
 
-        // Test Case 2: Multiple Zeros in Different Rows & Columns
-        int[][] matrix2 = {
-                {0, 1, 2, 0},
-                {3, 4, 5, 2},
-                {1, 3, 1, 5}
+        String[] descriptions = {
+                "Basic Example",
+                "Multiple Zeros in Different Rows & Columns",
+                "No Zeros",
+                "All Zeros",
+                "Single Row",
+                "Single Column",
+                "1x1 Matrix with Zero",
+                "1x1 Matrix without Zero"
         };
-        System.out.println("Test Case 2: Multiple Zeros in Different Rows & Columns");
-        System.out.println("Original Matrix:");
-        printMatrix(matrix2);
-        setMatrixZero(matrix2);
-        System.out.println("Modified Matrix:");
-        printMatrix(matrix2);
-        System.out.println();
 
-        // Test Case 3: No Zeros
-        int[][] matrix3 = {
-                {1, 2},
-                {3, 4}
-        };
-        System.out.println("Test Case 3: No Zeros");
-        System.out.println("Original Matrix:");
-        printMatrix(matrix3);
-        setMatrixZero(matrix3);
-        System.out.println("Modified Matrix:");
-        printMatrix(matrix3);
-        System.out.println();
-
-        // Test Case 4: All Zeros
-        int[][] matrix4 = {
-                {0, 0},
-                {0, 0}
-        };
-        System.out.println("Test Case 4: All Zeros");
-        System.out.println("Original Matrix:");
-        printMatrix(matrix4);
-        setMatrixZero(matrix4);
-        System.out.println("Modified Matrix:");
-        printMatrix(matrix4);
-        System.out.println();
-
-        // Test Case 5: Single Row
-        int[][] matrix5 = {
-                {1, 0, 3}
-        };
-        System.out.println("Test Case 5: Single Row");
-        System.out.println("Original Matrix:");
-        printMatrix(matrix5);
-        setMatrixZero(matrix5);
-        System.out.println("Modified Matrix:");
-        printMatrix(matrix5);
-        System.out.println();
-
-        // Test Case 6: Single Column
-        int[][] matrix6 = {
-                {1},
-                {0},
-                {3}
-        };
-        System.out.println("Test Case 6: Single Column");
-        System.out.println("Original Matrix:");
-        printMatrix(matrix6);
-        setMatrixZero(matrix6);
-        System.out.println("Modified Matrix:");
-        printMatrix(matrix6);
-        System.out.println();
-
-        // Test Case 7: 1x1 Matrix with Zero
-        int[][] matrix7 = {
-                {0}
-        };
-        System.out.println("Test Case 7: 1x1 Matrix with Zero");
-        System.out.println("Original Matrix:");
-        printMatrix(matrix7);
-        setMatrixZero(matrix7);
-        System.out.println("Modified Matrix:");
-        printMatrix(matrix7);
-        System.out.println();
-
-        // Test Case 8: 1x1 Matrix without Zero
-        int[][] matrix8 = {
-                {5}
-        };
-        System.out.println("Test Case 8: 1x1 Matrix without Zero");
-        System.out.println("Original Matrix:");
-        printMatrix(matrix8);
-        setMatrixZero(matrix8);
-        System.out.println("Modified Matrix:");
-        printMatrix(matrix8);
+        // Iterate over test cases with a loop
+        for (int i = 0; i < testCases.length; i++) {
+            System.out.println("Test Case " + (i + 1) + ": " + descriptions[i]);
+            System.out.println("Original Matrix:");
+            printMatrix(testCases[i]);
+            setMatrixZero(testCases[i]);
+            System.out.println("Modified Matrix:");
+            printMatrix(testCases[i]);
+            System.out.println();
+        }
     }
 }
