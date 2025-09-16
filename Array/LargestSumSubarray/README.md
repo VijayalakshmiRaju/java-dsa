@@ -72,7 +72,7 @@ LargestSumSubarray.java # Contains Kadane’s algorithm and test cases
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 1. Compile the file:
 ```bash
