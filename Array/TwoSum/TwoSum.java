@@ -6,7 +6,7 @@ public class TwoSum {
     /**
      * Naive approach: Check every pair (O(n^2))
      */
-    public int[] findTwoSumNaive(int[] nums, int target) {
+    public static int[] findTwoSumNaive(int[] nums, int target) {
         int[] result = new int[2];
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = i + 1; j < nums.length; j++) {
@@ -24,7 +24,7 @@ public class TwoSum {
     /**
      * Optimized approach using HashMap (O(n))
      */
-    public static int[] findTwoSumOptimized(int[] nums, int target) {
+    public static int[] findTwoSumHashMap(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
@@ -42,18 +42,36 @@ public class TwoSum {
     }
 
     /**
-     * Helper method to print the result
+     * 3. Two Pointers Approach (works only for sorted arrays) - O(n)
      */
-    public static void printResult(int[] nums, int target, int[] indices) {
+    public static int[] findTwoSumTwoPointers(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            if (sum == target) {
+                return new int[]{left, right};
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+
+    /**
+     * Helper method to print results
+     */
+    public static void printResult(String approach, int[] nums, int target, int[] indices) {
+        System.out.println("Approach: " + approach);
         System.out.println("Input array: " + Arrays.toString(nums));
         System.out.println("Target: " + target);
-        System.out.println("Indices of numbers adding up to target: " + Arrays.toString(indices));
+        System.out.println("Output Indices: " + Arrays.toString(indices));
         System.out.println("Numbers: " + nums[indices[0]] + " + " + nums[indices[1]] + " = " + target);
         System.out.println("---------------------------------------------------");
     }
 
     public static void main(String[] args) {
-        // Test cases
         int[][] testArrays = {
                 {2, 7, 11, 15},    // normal case
                 {3, 2, 4},         // numbers not at start
@@ -64,11 +82,32 @@ public class TwoSum {
         };
         int[] targets = {9, 6, 6, -8, 0, 3};
 
+        // Run for each test case
         for (int i = 0; i < testArrays.length; i++) {
             int[] nums = testArrays[i];
             int target = targets[i];
-            int[] result = findTwoSumOptimized(nums, target);
-            printResult(nums, target, result);
+
+            // Naive
+            int[] resultNaive = findTwoSumNaive(nums, target);
+            printResult("Naive (Brute Force)", nums, target, resultNaive);
+
+            // HashMap
+            int[] resultHashMap = findTwoSumHashMap(nums, target);
+            printResult("Optimized (HashMap)", nums, target, resultHashMap);
+
+            // Two Pointers (only works correctly if array is sorted)
+            int[] sorted = Arrays.copyOf(nums, nums.length);
+            Arrays.sort(sorted); // ensure sorted before applying two pointers
+            try {
+                int[] resultTwoPointers = findTwoSumTwoPointers(sorted, target);
+                printResult("Two Pointers (Sorted Array)", sorted, target, resultTwoPointers);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Approach: Two Pointers (Sorted Array)");
+                System.out.println("Input array: " + Arrays.toString(sorted));
+                System.out.println("Target: " + target);
+                System.out.println("No valid two sum solution found with this approach.");
+                System.out.println("---------------------------------------------------");
+            }
         }
     }
 }
