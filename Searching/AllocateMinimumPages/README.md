@@ -2,7 +2,7 @@
 
 This project contains a Java implementation of the **Book Allocation Problem** (also known as Allocate Minimum Number of Pages).  
 
-The solution is first implemented using a **recursive approach** for clarity. It demonstrates how to explore all possible allocations of books among students to minimize the maximum number of pages allocated.  
+The solution is first implemented using a **recursive approach** for clarity, and then optimized using **Binary Search + Greedy** for efficiency.  
 
 ---
 
@@ -33,20 +33,32 @@ Student 1 → [12, 34, 67], Student 2 → [90] → max pages = 113 (optimal)
 
 Answer = 113
 
+---
+
 ## Approach
+
 ### 1. Recursive Partitioning (Brute Force)
-- Try all possible ways to partition the books among students.
+- Try all possible ways to partition the books among students.  
 - For each partition:
-  - Compute the maximum pages allocated to any student.
-  - Take the minimum across all partitions.
-- Guarantees the correct result but is inefficient for large inputs.
+  - Compute the maximum pages allocated to any student.  
+  - Take the minimum across all partitions.  
+- Guarantees correctness but is inefficient for large inputs.  
+
+### 2. Optimized Approach (Binary Search + Greedy)
+- Define the answer range:
+  - Minimum = maximum pages of a single book.  
+  - Maximum = sum of all pages.  
+- Apply binary search on this range.  
+- For each mid value, check feasibility using a **greedy allocation**.  
+- Narrow down to the minimum feasible maximum.  
 
 ---
 
 ## Complexities
-| Approach                 | Time Complexity       | Space Complexity |
-|---------------------------|-----------------------|------------------|
-| Recursive (brute force)   | Exponential `O(2^n)` | `O(n)` (recursion stack) |
+| Approach                         | Time Complexity       | Space Complexity |
+|----------------------------------|-----------------------|------------------|
+| Recursive (brute force)          | Exponential `O(2^n)` | `O(n)` (recursion stack) |
+| Binary Search + Greedy (optimal) | `O(n log(sum(arr)))` | `O(1)` |
 
 ---
 
@@ -73,5 +85,5 @@ Test 6 → Expected: 42, Got: 42
 ---
 
 ## Notes
-- This implementation demonstrates the **recursive brute-force solution**.  
-- For larger input sizes, an **optimized binary search + greedy approach** should be preferred for efficiency.  
+- The **recursive approach** is useful for understanding the problem’s fundamentals.  
+- The **binary search + greedy approach** is the practical and scalable solution.  
