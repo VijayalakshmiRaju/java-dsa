@@ -43,6 +43,54 @@ public class AllocateMinimumPages {
         return s;
     }
 
+    // Optimized approach using Binary Search + Greedy
+    public static int minPagesBinarySearch(int[] arr, int n, int noOfStudents) {
+        // Calculate total sum of pages and the max single book
+        int sum = 0, max = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+            max = Math.max(max, arr[i]);
+        }
+
+        // Lower bound = max (a student must get at least 1 largest book)
+        // Upper bound = sum (if one student gets all books)
+        int low = max, high = sum, result = 0;
+
+        // Binary search between low and high
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            // If feasible allocation exists with max pages = mid
+            if (isFeasible(arr, n, noOfStudents, mid)) {
+                result = mid;       // store result
+                high = mid - 1;     // try for smaller maximum
+            } else {
+                low = mid + 1;      // increase limit
+            }
+        }
+
+        return result;
+    }
+
+    // Greedy feasibility check:
+    // Can we allocate books so that no student gets more than 'ans' pages?
+    public static boolean isFeasible(int[] arr, int n, int noOfStudents, int ans) {
+        int required = 1, curSum = 0;
+
+        for (int i = 0; i < n; i++) {
+            // If adding arr[i] exceeds limit, allocate to next student
+            if (curSum + arr[i] > ans) {
+                required++;
+                curSum = arr[i];
+            } else {
+                curSum += arr[i];
+            }
+        }
+
+        // Valid if required students <= given number of students
+        return (required <= noOfStudents);
+    }
+
     // Main method with looped test cases
     public static void main(String[] args) {
         // Define test cases: {bookArray, noOfStudents, expectedResult}
@@ -61,12 +109,18 @@ public class AllocateMinimumPages {
             int students = (int) testCases[i][1];
             int expected = (int) testCases[i][2];
 
-            int result = minPages(books, books.length, students);
+            // Run recursive solution
+            int resultRecursive = minPages(books, books.length, students);
 
+            // Run optimized binary search solution
+            int resultOptimized = minPagesBinarySearch(books, books.length, students);
+
+            // Print results for both approaches
             System.out.println("Test " + (i + 1) +
                     " → Expected: " + expected +
-                    ", Got: " + result +
-                    (result == expected ? " PASS" : " FAIL"));
+                    ", Recursive: " + resultRecursive +
+                    ", Optimized: " + resultOptimized +
+                    ((resultRecursive == expected && resultOptimized == expected) ? " PASS" : " FAIL"));
         }
     }
 }
