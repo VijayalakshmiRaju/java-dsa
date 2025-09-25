@@ -19,6 +19,11 @@ Since factorials have more factors of 2 than 5, the count of trailing zeroes dep
 2. Count how many multiples of `25` are less than or equal to `n` (since each contributes an extra factor of 5).  
 3. Continue for higher powers like `125`, `625`, etc., until `n / 5^k < 1`.  
 
+The formula is:  
+
+\[
+TrailingZeroes(n) = \left\lfloor \frac{n}{5} \right\rfloor + \left\lfloor \frac{n}{25} \right\rfloor + \left\lfloor \frac{n}{125} \right\rfloor + \cdots
+\]
 
 ---
 
