@@ -71,6 +71,13 @@ Step-by-step:
 
 ---
 
+## Edge Cases
+- **Empty string** → returns `0` (not a valid Roman numeral, but safely handled).  
+- **Single symbol** → returns its value (e.g., `M = 1000`).  
+- **Lowercase input** → can be converted to uppercase before processing (`xiv → XIV → 14`).  
+
+---
+
 ## Time and Space Complexity
 
 | Operation        | Complexity |
