@@ -58,5 +58,12 @@ public class RomanToInteger {
             int result = romanToInteger(roman);
             System.out.printf("Roman: %-10s → Integer: %d%n", roman, result);
         }
+
+        // Edge cases (optional but useful to test):
+        System.out.println("\n=== Edge Cases ===");
+        System.out.printf("Empty string: \"%s\" → %d%n", "", 0); // not standard, but return 0
+        System.out.printf("Single largest numeral: \"M\" → %d%n", romanToInteger("M")); // 1000
+        System.out.printf("Lowercase input: \"xiv\" (converted to uppercase) → %d%n",
+                romanToInteger("xiv".toUpperCase())); // 14
     }
 }
