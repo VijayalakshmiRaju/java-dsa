@@ -78,4 +78,8 @@ Step-by-step:
 | Time Complexity  | **O(n)** (n = length of Roman numeral string) |
 | Space Complexity | **O(1)** (only a fixed map of 7 symbols is used) |
 
----  
+---
+
+## Notes
+- This solution assumes the input Roman numeral is **valid**.  
+- Validation for invalid numerals (e.g., `"IIII"`, `"VV"`, `"IC"`) can be added if required.  
