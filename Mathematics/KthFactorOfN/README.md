@@ -28,16 +28,65 @@ The task is to find the **k-th factor** of `n` in ascending order. If `n` has fe
 
 ### Brute Force
 
-1. Iterate from 1 to `n`.
-2. For each number, check if it divides `n`.
-3. Decrement `k` for every factor found.
-4. If `k` becomes 0, return the current number as the k-th factor.
+1. Iterate from 1 to `n`.  
+2. For each number, check if it divides `n`.  
+3. Decrement `k` for every factor found.  
+4. If `k` becomes 0, return the current number as the k-th factor.  
 5. If the loop ends without finding k factors, return `-1`.
 
-### Complexity
+### Optimized Approach
 
-- **Time Complexity:** O(n)  
-- **Space Complexity:** O(1)
+1. Loop from 1 to √n to find **small factors**.  
+2. For each small factor `i`, the paired factor is `n / i`.  
+   - If `i != n / i` (to avoid duplicates for perfect squares), store `n / i` in a list of **large factors**.  
+3. If k-th factor is not found among small factors, find it among large factors using the descending order of the large factor list.  
+4. If k is still not satisfied, return `-1`.
 
 ---
 
+## Time and Space Complexity
+
+| Approach          | Time Complexity | Space Complexity | Notes                                                                 |
+|------------------|----------------|-----------------|-----------------------------------------------------------------------|
+| Brute Force       | O(n)           | O(1)            | Iterates through all numbers from 1 to n                               |
+| Optimized (√n)    | O(√n)          | O(√n)           | Uses factor pairs; only loops up to √n and stores paired larger factors |
+
+---
+
+## Expected Output
+
+==== Brute-force Approach ====
+Input: n = 12, k = 3 -> Output: 3
+Input: n = 7, k = 2 -> Output: 7
+Input: n = 4, k = 4 -> Output: -1
+Input: n = 1, k = 1 -> Output: 1
+Input: n = 1, k = 2 -> Output: -1
+Input: n = 1000, k = 1 -> Output: 1
+Input: n = 1000, k = 16 -> Output: 1000
+Input: n = 36, k = 9 -> Output: 36
+Input: n = 997, k = 1 -> Output: 1
+Input: n = 997, k = 2 -> Output: 997
+
+==== Optimized Approach ====
+Input: n = 12, k = 3 -> Output: 3
+Input: n = 7, k = 2 -> Output: 7
+Input: n = 4, k = 4 -> Output: -1
+Input: n = 1, k = 1 -> Output: 1
+Input: n = 1, k = 2 -> Output: -1
+Input: n = 1000, k = 1 -> Output: 1
+Input: n = 1000, k = 16 -> Output: 1000
+Input: n = 36, k = 9 -> Output: 36
+Input: n = 997, k = 1 -> Output: 1
+Input: n = 997, k = 2 -> Output: 997
+
+---
+
+This README now includes:  
+
+- Problem description  
+- Constraints  
+- Approach explanations  
+- Time and space complexity in **table format**  
+- Expected outputs for both approaches  
+
+---
