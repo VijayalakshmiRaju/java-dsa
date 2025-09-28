@@ -47,6 +47,14 @@ If one string is longer than the other, the remaining characters from the longer
 
 ---
 
+## Edge Cases
+- One string empty (`s1=""`, `s2="hello"` → `"hello"`)
+- Both strings empty (`"" + ""` → `""`)
+- Strings with single characters (`"A", "B"` → `"AB"`)
+- Special characters and digits (`"123", "!@#"` → `"1!2@3#"`)
+
+---
+
 ## Time and Space Complexity
 
 | Operation        | Complexity |
