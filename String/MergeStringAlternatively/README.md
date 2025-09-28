@@ -64,3 +64,15 @@ If one string is longer than the other, the remaining characters from the longer
 | Space Complexity | **O(n + m)** (for result storage) |
 
 ---
+
+## How to Run
+1. Save the file as `MergeStringAlternatively.java`.
+2. Compile the program:
+   ```bash
+   javac MergeStringAlternatively.java
+   ```
+3. Run the program:
+   ```bash
+   java MergeStringAlternatively
+   ```
+---
