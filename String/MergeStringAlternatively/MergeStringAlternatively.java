@@ -47,7 +47,7 @@ public class MergeStringAlternatively {
                     ": mergeStringAlternatively(\"" + s1 + "\", \"" + s2 + "\")" +
                     " => " + actual +
                     " | Expected: " + expected +
-                    " | " + (actual.equals(expected) ? "PASS ✅" : "FAIL ❌"));
+                    " | " + (actual.equals(expected) ? "PASS" : "FAIL"));
         }
     }
 }
