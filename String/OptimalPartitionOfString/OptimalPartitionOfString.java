@@ -5,6 +5,11 @@ public class OptimalPartitionOfString {
     // Function to return the minimum number of substrings such that
     // no character appears more than once in any substring
     public static int partitionString(String s) {
+        // Edge case: empty string → no partition needed
+        if (s == null || s.isEmpty()) {
+            return 0;
+        }
+
         // At least one substring will always exist
         int totalCount = 1;
 
@@ -31,39 +36,45 @@ public class OptimalPartitionOfString {
         return totalCount;
     }
 
-    // Main method to test the function with different test cases
+    // Main method with for loop for test cases
     public static void main(String[] args) {
-        // Test Case 1: Normal case with repeating characters
-        System.out.println("Test 1 (\"abac\") → " + partitionString("abac")); // Expected 2
+        // Define test inputs
+        String[] testInputs = {
+                "abac",               // Normal case
+                "abcdef",             // All unique
+                "aaaa",               // All same
+                "abab",               // Alternating repeats
+                "",                   // Empty string
+                "z",                  // Single character
+                "abcdefghijklmnopqrstuvwxyz", // Full alphabet
+                "zzzzzzzz",           // Multiple same chars
+                "abacabad"            // Mixed pattern
+        };
 
-        // Test Case 2: All unique characters
-        System.out.println("Test 2 (\"abcdef\") → " + partitionString("abcdef")); // Expected 1
+        // Define expected outputs (same index as inputs)
+        int[] expectedOutputs = {
+                2, // "abac"
+                1, // "abcdef"
+                4, // "aaaa"
+                2, // "abab"
+                0, // ""
+                1, // "z"
+                1, // alphabet
+                8, // "zzzzzzzz"
+                4  // "abacabad"
+        };
 
-        // Test Case 3: All same characters
-        System.out.println("Test 3 (\"aaaa\") → " + partitionString("aaaa")); // Expected 4
+        // Loop through test cases
+        for (int i = 0; i < testInputs.length; i++) {
+            int result = partitionString(testInputs[i]);
+            System.out.println("Test " + (i + 1) + " (\"" + testInputs[i] + "\") → "
+                    + result + " | Expected: " + expectedOutputs[i]
+                    + " | " + (result == expectedOutputs[i] ? "PASS" : "FAIL"));
+        }
 
-        // Test Case 4: Alternating repeating characters
-        System.out.println("Test 4 (\"abab\") → " + partitionString("abab")); // Expected 2
-
-        // Test Case 5: Empty string (edge case)
-        System.out.println("Test 5 (\"\") → " + ( "".isEmpty() ? 0 : partitionString("") )); // Expected 0
-
-        // Test Case 6: Single character string
-        System.out.println("Test 6 (\"z\") → " + partitionString("z")); // Expected 1
-
-        // Test Case 7: Long string with no repeats
-        System.out.println("Test 7 (\"abcdefghijklmnopqrstuvwxyz\") → " +
-                partitionString("abcdefghijklmnopqrstuvwxyz")); // Expected 1
-
-        // Test Case 8: Long string with all same character
-        System.out.println("Test 8 (\"zzzzzzzz\") → " + partitionString("zzzzzzzz")); // Expected 8
-
-        // Test Case 9: Mixed pattern
-        System.out.println("Test 9 (\"abacabad\") → " + partitionString("abacabad")); // Expected 4
-
-        // Test Case 10: Large input stress test (edge case)
+        // Stress test for very large input
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 100000; i++) sb.append('a'); // 100k same chars
-        System.out.println("Test 10 (100k 'a's) → " + partitionString(sb.toString())); // Expected 100000
+        for (int i = 0; i < 100000; i++) sb.append('a'); // 100k 'a's
+        System.out.println("Stress Test (100k 'a's) → " + partitionString(sb.toString()));
     }
 }
