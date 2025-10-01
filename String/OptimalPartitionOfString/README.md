@@ -66,6 +66,12 @@ Return the **number of substrings** created.
 
 ---
 
+## Stress Test
+- Input: string of **100,000 'a' characters**  
+- Output: **100,000** substrings  
+
+---
+
 ## How to Run
 1. Save the code in `OptimalPartitionOfString.java`.  
 2. Compile:  
