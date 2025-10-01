@@ -30,4 +30,40 @@ public class OptimalPartitionOfString {
         // Return the total number of substrings formed
         return totalCount;
     }
+
+    // Main method to test the function with different test cases
+    public static void main(String[] args) {
+        // Test Case 1: Normal case with repeating characters
+        System.out.println("Test 1 (\"abac\") → " + partitionString("abac")); // Expected 2
+
+        // Test Case 2: All unique characters
+        System.out.println("Test 2 (\"abcdef\") → " + partitionString("abcdef")); // Expected 1
+
+        // Test Case 3: All same characters
+        System.out.println("Test 3 (\"aaaa\") → " + partitionString("aaaa")); // Expected 4
+
+        // Test Case 4: Alternating repeating characters
+        System.out.println("Test 4 (\"abab\") → " + partitionString("abab")); // Expected 2
+
+        // Test Case 5: Empty string (edge case)
+        System.out.println("Test 5 (\"\") → " + ( "".isEmpty() ? 0 : partitionString("") )); // Expected 0
+
+        // Test Case 6: Single character string
+        System.out.println("Test 6 (\"z\") → " + partitionString("z")); // Expected 1
+
+        // Test Case 7: Long string with no repeats
+        System.out.println("Test 7 (\"abcdefghijklmnopqrstuvwxyz\") → " +
+                partitionString("abcdefghijklmnopqrstuvwxyz")); // Expected 1
+
+        // Test Case 8: Long string with all same character
+        System.out.println("Test 8 (\"zzzzzzzz\") → " + partitionString("zzzzzzzz")); // Expected 8
+
+        // Test Case 9: Mixed pattern
+        System.out.println("Test 9 (\"abacabad\") → " + partitionString("abacabad")); // Expected 4
+
+        // Test Case 10: Large input stress test (edge case)
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 100000; i++) sb.append('a'); // 100k same chars
+        System.out.println("Test 10 (100k 'a's) → " + partitionString(sb.toString())); // Expected 100000
+    }
 }
