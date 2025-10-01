@@ -42,6 +42,14 @@ Return the **number of substrings** created.
 
 ---
 
+## Edge Cases
+- Empty string → `0` substrings  
+- Single character string → `1` substring  
+- All unique characters → `1` substring  
+- All identical characters → `length of string` substrings  
+
+---
+
 ## How to Run
 1. Save the code in `OptimalPartitionOfString.java`.  
 2. Compile:  
@@ -52,3 +60,4 @@ Return the **number of substrings** created.
    ```bash
    java OptimalPartitionOfString
    ```
+   
