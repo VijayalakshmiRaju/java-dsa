@@ -50,6 +50,22 @@ Return the **number of substrings** created.
 
 ---
 
+## Test Cases
+
+| Input | Expected Output | Explanation |
+|-------|-----------------|-------------|
+| `"abac"` | `2` | Partition: `"ab"`, `"ac"` |
+| `"abcdef"` | `1` | All unique characters |
+| `"aaaa"` | `4` | Each `"a"` must be separate |
+| `"abab"` | `2` | Partition: `"ab"`, `"ab"` |
+| `""` | `0` | Empty string |
+| `"z"` | `1` | Single character |
+| `"abcdefghijklmnopqrstuvwxyz"` | `1` | All unique characters |
+| `"zzzzzzzz"` | `8` | Each `"z"` must be separate |
+| `"abacabad"` | `4` | Partition: `"ab"`, `"ac"`, `"ab"`, `"ad"` |
+
+---
+
 ## How to Run
 1. Save the code in `OptimalPartitionOfString.java`.  
 2. Compile:  
@@ -60,4 +76,3 @@ Return the **number of substrings** created.
    ```bash
    java OptimalPartitionOfString
    ```
-   
