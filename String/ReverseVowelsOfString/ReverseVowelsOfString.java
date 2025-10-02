@@ -1,67 +1,75 @@
 public class ReverseVowelsOfString {
 
+    // Function to reverse vowels in a given string
     public static String reverseVowels(String s) {
+        // Define all vowels (both lowercase and uppercase)
         String vowels = "aeiouAEIOU";
-        char[] charArr = s.toCharArray();
-        int left = 0;
-        int right = charArr.length - 1;
+        char[] charArr = s.toCharArray(); // Convert string to char array for easy manipulation
+        int left = 0;                     // Start pointer (leftmost character)
+        int right = charArr.length - 1;   // End pointer (rightmost character)
 
+        // Process until two pointers meet
         while (left < right) {
-            // move left until a vowel is found
+            // Move left pointer forward until a vowel is found
             while (left < right && vowels.indexOf(charArr[left]) == -1) {
                 left++;
             }
 
-            // move right until a vowel is found
+            // Move right pointer backward until a vowel is found
             while (left < right && vowels.indexOf(charArr[right]) == -1) {
                 right--;
             }
 
-            // swap vowels
+            // Swap vowels at left and right
             char temp = charArr[left];
             charArr[left] = charArr[right];
             charArr[right] = temp;
 
+            // Move both pointers inward after swapping
             left++;
             right--;
         }
 
+        // Convert char array back to string
         return new String(charArr);
     }
 
-    // Main method with test cases
+    // Main method to test multiple cases
     public static void main(String[] args) {
-        // Normal case
-        System.out.println("hello → " + reverseVowels("hello")); // holle
+        // Array of input test cases
+        String[] testInputs = {
+                "hello",        // Normal case
+                "rhythm",       // No vowels
+                "aeiou",        // Only vowels
+                "LeetCode",     // Mixed case
+                "a",            // Single vowel
+                "z",            // Single consonant
+                "",             // Empty string
+                " a e i o u ",  // String with spaces
+                "madam",        // Palindrome with vowels
+                "HELLO",        // Uppercase vowels
+                "hEllo, World!" // Sentence with punctuation
+        };
 
-        // Word with no vowels
-        System.out.println("rhythm → " + reverseVowels("rhythm")); // rhythm
+        // Expected outputs (for clarity)
+        String[] expectedOutputs = {
+                "holle",
+                "rhythm",
+                "uoiea",
+                "LeotCede",
+                "a",
+                "z",
+                "",
+                " u o i e a ",
+                "madam",
+                "HOLLE",
+                "hOlle, Werld!"
+        };
 
-        // Word with only vowels
-        System.out.println("aeiou → " + reverseVowels("aeiou")); // uoiea
-
-        // Mixed case
-        System.out.println("LeetCode → " + reverseVowels("LeetCode")); // LeotCede
-
-        // Single character vowel
-        System.out.println("a → " + reverseVowels("a")); // a
-
-        // Single character consonant
-        System.out.println("z → " + reverseVowels("z")); // z
-
-        // Empty string
-        System.out.println("\"\" → " + reverseVowels("")); // ""
-
-        // String with spaces
-        System.out.println("\" a e i o u \" → " + reverseVowels(" a e i o u ")); // " u o i e a "
-
-        // Palindrome with vowels
-        System.out.println("madam → " + reverseVowels("madam")); // madam
-
-        // Uppercase vowels
-        System.out.println("HELLO → " + reverseVowels("HELLO")); // HOLLE
-
-        // Sentence with punctuation
-        System.out.println("hEllo, World! → " + reverseVowels("hEllo, World!")); // hOlle, Werld!
+        // Run all test cases using a for loop
+        for (int i = 0; i < testInputs.length; i++) {
+            String result = reverseVowels(testInputs[i]);
+            System.out.println("Input: \"" + testInputs[i] + "\" | Output: \"" + result + "\" | Expected: \"" + expectedOutputs[i] + "\"");
+        }
     }
 }
