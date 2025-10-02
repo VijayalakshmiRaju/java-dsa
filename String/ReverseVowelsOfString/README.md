@@ -18,6 +18,15 @@ All other characters should remain in their original position.
 
 ---
 
+## Complexity Analysis
+
+| Operation           | Complexity | Explanation |
+|---------------------|------------|-------------|
+| Time Complexity     | **O(n)**   | Each character is checked at most once while scanning with two pointers. |
+| Space Complexity    | **O(n)**   | A character array copy of the input string is used for in-place swaps. |
+
+---
+
 ## Test Coverage
 
 The program is tested against multiple scenarios:
