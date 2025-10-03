@@ -43,4 +43,31 @@ public class ValidPalindrome {
         // If loop finishes without mismatches → it’s a palindrome
         return true;
     }
+
+    // Main method with test cases
+    public static void main(String[] args) {
+        // Palindrome tests
+        System.out.println(isPalindrome("A man, a plan, a canal: Panama")); // true
+        System.out.println(isPalindrome("racecar")); // true
+        System.out.println(isPalindrome("Madam")); // true
+        System.out.println(isPalindrome("No 'x' in Nixon")); // true
+        System.out.println(isPalindrome("12321")); // true
+        System.out.println(isPalindrome("Was it a car or a cat I saw?")); // true
+
+        // Non-palindrome tests
+        System.out.println(isPalindrome("hello")); // false
+        System.out.println(isPalindrome("world")); // false
+        System.out.println(isPalindrome("palindrome")); // false
+        System.out.println(isPalindrome("12345")); // false
+
+        // Edge cases
+        System.out.println(isPalindrome("")); // true
+        System.out.println(isPalindrome(" ")); // true
+        System.out.println(isPalindrome("!!!")); // true
+        System.out.println(isPalindrome("a")); // true
+        System.out.println(isPalindrome("0")); // true
+        System.out.println(isPalindrome("aa")); // true
+        System.out.println(isPalindrome("ab")); // false
+        System.out.println(isPalindrome("Able was I, ere I saw Elba")); // true
+    }
 }
