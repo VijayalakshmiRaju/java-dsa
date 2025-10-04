@@ -28,8 +28,36 @@ We solve this problem using a **stack**:
 **Input:**  
 ([{}])
 
+
+**Process (Stack State):**
+- `(` → push → [ ( ]  
+- `[` → push → [ ( , [ ]  
+- `{` → push → [ ( , [ , { ]  
+- `}` → pop `{` → [ ( , [ ]  
+- `]` → pop `[` → [ ( ]  
+- `)` → pop `(` → [ ] (empty)
+
 **Output:**  
 Valid
+
+---
+
+## Test Cases
+
+| Input        | Output   |
+|--------------|----------|
+| `()`         | Valid |
+| `()[]{}`     | Valid |
+| `([{}])`     | Valid |
+| `(]`         | Invalid |
+| `([)]`       | Invalid |
+| `(((`        | Invalid |
+| `))`         | Invalid |
+| `({[})`      | Invalid |
+| `` (empty)   | Valid |
+| `a+b*(c-d)`  | Valid |
+| `[`          | Invalid |
+| `]`          | Invalid |
 
 ---
 
