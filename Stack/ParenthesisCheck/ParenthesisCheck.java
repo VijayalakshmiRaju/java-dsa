@@ -40,24 +40,28 @@ public class ParenthesisCheck {
         return stack.isEmpty();
     }
 
-    // Main method to test different cases
+    // Main method to test different cases with descriptive output
     public static void main(String[] args) {
-        //Valid cases
-        System.out.println(isValidParenthesis("()"));        // true
-        System.out.println(isValidParenthesis("()[]{}"));    // true
-        System.out.println(isValidParenthesis("([{}])"));    // true
+        // Test inputs
+        String[] testCases = {
+                "()",        // valid simple
+                "()[]{}",    // valid multiple types
+                "([{}])",    // valid nested
+                "(]",        // mismatch
+                "([)]",      // wrong order
+                "(((",       // only opening
+                "))",        // only closing
+                "({[})",     // mixed invalid
+                "",          // empty string
+                "a+b*(c-d)", // with non-bracket chars
+                "[",         // single opening
+                "]"          // single closing
+        };
 
-        // Invalid cases
-        System.out.println(isValidParenthesis("(]"));        // false
-        System.out.println(isValidParenthesis("([)]"));      // false
-        System.out.println(isValidParenthesis("((("));       // false
-        System.out.println(isValidParenthesis("))"));        // false
-        System.out.println(isValidParenthesis("({[})"));     // false
-
-        // Edge cases
-        System.out.println(isValidParenthesis(""));          // true (empty string is balanced)
-        System.out.println(isValidParenthesis("a+b*(c-d)")); // true (ignores non-bracket chars)
-        System.out.println(isValidParenthesis("["));         // false (only opening)
-        System.out.println(isValidParenthesis("]"));         // false (only closing)
+        System.out.println("Parenthesis Check Results:\n");
+        for (String test : testCases) {
+            boolean result = isValidParenthesis(test);
+            System.out.printf("Input: %-10s → %s\n", "\"" + test + "\"", (result ? "Valid" : "Invalid"));
+        }
     }
 }
