@@ -6,7 +6,9 @@ It includes methods to:
 - **Set (turn ON)** a bit  
 - **Unset (turn OFF)** a bit  
 - **Check** if a specific bit is set  
-- **Toggle (flip)** a bit  
+- **Toggle (flip)** a bit
+- Multiplying and dividing numbers using bit shifts
+- Swapping two numbers using XOR (without a temporary variable)  
 
 These operations are performed using efficient bit-level logic that directly interacts with binary representation of numbers.
 
@@ -73,6 +75,41 @@ Result: The k-th bit is flipped (1 → 0 or 0 → 1).
 
 ---
 
+### 5. **Multiply by Two**
+Doubles the number using a left shift.
+
+**Steps:**
+- Shift bits left by 1 → `num << 1`  
+
+**Result:**  
+Equivalent to `num * 2`.
+
+---
+
+### 6. **Divide by Two**
+Halves the number using a right shift.
+
+**Steps:**
+- Shift bits right by 1 → `num >> 1`  
+
+**Result:**  
+Equivalent to `num / 2` (integer division).
+
+---
+
+### 7. **Swap Two Numbers Without Temporary Variable**
+Uses XOR to exchange two values without extra memory.
+
+**Steps:**
+num1 = num1 ^ num2
+num2 = num2 ^ num1
+num1 = num1 ^ num2
+
+**Result:**  
+`num1` and `num2` swap their values.
+
+---
+
 ## Complexity Analysis
 
 | Operation | Time Complexity | Space Complexity | Explanation |
@@ -81,6 +118,9 @@ Result: The k-th bit is flipped (1 → 0 or 0 → 1).
 | `unsetBit()` | O(1) | O(1) | Uses one left shift, NOT, and AND operation |
 | `isKthBitSet()` | O(1) | O(1) | Uses one left shift and one AND operation |
 | `toggleKthBit()` | O(1) | O(1) | Uses one left shift and one XOR operation |
+| `multiplyByTwo()` | O(1) | O(1) | Uses left shift |
+| `divideByTwo()` | O(1) | O(1) | Uses right shift |
+| `swapNumbers()` | O(1) | O(1) | Uses XOR logic without temporary variable |
 
 ---
 
@@ -92,6 +132,9 @@ Result: The k-th bit is flipped (1 → 0 or 0 → 1).
 | `unsetBit(15, 4)` | (15, 4) | 1111 | 0111 | 7 |
 | `isKthBitSet(5, 3)` | (5, 3) | 0101 | Bit at position 3 is 1 | true |
 | `toggleKthBit(9, 1)` | (9, 1) | 1001 | 1000 | 8 |
+| `multiplyByTwo(8)` | (8) | 1000 | 10000 | 16 |
+| `divideByTwo(8)` | (8) | 1000 | 100 | 4 |
+| `swapNumbers(4, 7)` | (4, 7) | 0100, 0111 | 0111, 0100 | Swapped |
 
 ---
 
