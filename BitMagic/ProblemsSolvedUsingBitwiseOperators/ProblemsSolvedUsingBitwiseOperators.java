@@ -37,58 +37,76 @@ public class ProblemsSolvedUsingBitwiseOperators {
         return num ^ mask;
     }
 
-    public static int multiplyByTwo ( int num ) {
+    // Multiply number by 2 using bitwise left shift
+    public static int multiplyByTwo(int num) {
+        // Left shift by 1 bit → equivalent to num * 2
         return num << 1;
     }
-    public static int divideByTwo ( int num ) {
+
+    // Divide number by 2 using bitwise right shift
+    public static int divideByTwo(int num) {
+        // Right shift by 1 bit → equivalent to num / 2
         return num >> 1;
+    }
+
+    // Function to swap two numbers using XOR (without temporary variable)
+    public static void swapNumbers(int num1, int num2) {
+        System.out.println("Before swapping → num1: " + num1 + ", num2: " + num2);
+        // XOR-based swap
+        num1 ^= num2;
+        num2 ^= num1;
+        num1 ^= num2;
+        System.out.println("After swapping  → num1: " + num1 + ", num2: " + num2);
     }
 
     // Main method to test all bitwise operations
     public static void main(String[] args) {
-
-        // Example 1: Set bit
-        int num1 = 5;    // Binary: 0101
-        int bitPos1 = 2; // We’ll set the 2nd bit
-
-        // Example 2: Unset bit
-        int num2 = 15;   // Binary: 1111
-        int bitPos2 = 4; // We’ll unset the 4th bit
-
-        // Example 3: Check bit
-        int num3 = 5;    // Binary: 0101
-        int bitPos3 = 3; // We’ll check if the 3rd bit is set
-
-        // Example 4: Toggle bit
-        int num4 = 9;    // Binary: 1001
-        int bitPos4 = 1; // We’ll toggle the 1st bit
-
         System.out.println("========== Bitwise Operations ==========\n");
 
         // ---- Test 1: Set Bit ----
+        int num1 = 5;    // Binary: 0101
+        int bitPos1 = 2;
         int setResult = setBit(num1, bitPos1);
         System.out.println("SET BIT OPERATION:");
         System.out.println("Original Number : " + num1 + " (Binary: " + Integer.toBinaryString(num1) + ")");
         System.out.println("After setting bit " + bitPos1 + " : " + setResult + " (Binary: " + Integer.toBinaryString(setResult) + ")\n");
 
         // ---- Test 2: Unset Bit ----
+        int num2 = 15;   // Binary: 1111
+        int bitPos2 = 4;
         int unsetResult = unsetBit(num2, bitPos2);
         System.out.println("UNSET BIT OPERATION:");
         System.out.println("Original Number : " + num2 + " (Binary: " + Integer.toBinaryString(num2) + ")");
         System.out.println("After unsetting bit " + bitPos2 + " : " + unsetResult + " (Binary: " + Integer.toBinaryString(unsetResult) + ")\n");
 
         // ---- Test 3: Check if Bit is Set ----
+        int num3 = 5;    // Binary: 0101
+        int bitPos3 = 3;
         boolean isSet = isKthBitSet(num3, bitPos3);
         System.out.println("CHECK BIT OPERATION:");
         System.out.println("Number : " + num3 + " (Binary: " + Integer.toBinaryString(num3) + ")");
         System.out.println("Is bit " + bitPos3 + " set? : " + (isSet ? "YES" : "NO") + "\n");
 
         // ---- Test 4: Toggle Bit ----
+        int num4 = 9;    // Binary: 1001
+        int bitPos4 = 1;
         int toggleResult = toggleKthBit(num4, bitPos4);
         System.out.println("TOGGLE BIT OPERATION:");
         System.out.println("Original Number : " + num4 + " (Binary: " + Integer.toBinaryString(num4) + ")");
         System.out.println("After toggling bit " + bitPos4 + " : " + toggleResult + " (Binary: " + Integer.toBinaryString(toggleResult) + ")\n");
 
-        System.out.println("========================================");
+        // ---- Test 5: Multiply and Divide by 2 ----
+        int num5 = 8;
+        int multiplied = multiplyByTwo(num5);
+        int divided = divideByTwo(num5);
+        System.out.println("MULTIPLY & DIVIDE OPERATION:");
+        System.out.println("Original Number : " + num5 + " (Binary: " + Integer.toBinaryString(num5) + ")");
+        System.out.println("After multiplying by 2 : " + multiplied + " (Binary: " + Integer.toBinaryString(multiplied) + ")");
+        System.out.println("After dividing by 2    : " + divided + " (Binary: " + Integer.toBinaryString(divided) + ")\n");
+
+        // ---- Test 6: Swap Numbers ----
+        System.out.println("SWAP OPERATION:");
+        swapNumbers(4, 7);
+        System.out.println("\n========================================");
     }
 }
