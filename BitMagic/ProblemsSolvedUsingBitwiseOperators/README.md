@@ -36,6 +36,20 @@ These operations are performed using efficient bit-level logic that directly int
 
 ---
 
+## Operations and Their Purpose
+
+| Operation | Description | Formula / Bitwise Logic |
+|------------|--------------|--------------------------|
+| Set Bit | Turns ON the k-th bit | `num | (1 << (k - 1))` |
+| Unset Bit | Turns OFF the k-th bit | `num & ~(1 << (k - 1))` |
+| Check Bit | Checks if k-th bit is 1 | `(num & (1 << (k - 1))) != 0` |
+| Toggle Bit | Flips the k-th bit | `num ^ (1 << (k - 1))` |
+| Multiply by 2 | Shifts bits left by 1 | `num << 1` |
+| Divide by 2 | Shifts bits right by 1 | `num >> 1` |
+| Swap Numbers | Uses XOR logic | `a ^= b; b ^= a; a ^= b;` |
+
+---
+
 ## Approach Breakdown
 
 ### 1. **Set a Bit**
