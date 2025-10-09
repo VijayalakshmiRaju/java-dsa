@@ -37,6 +37,13 @@ public class ProblemsSolvedUsingBitwiseOperators {
         return num ^ mask;
     }
 
+    public static int multiplyByTwo ( int num ) {
+        return num << 1;
+    }
+    public static int divideByTwo ( int num ) {
+        return num >> 1;
+    }
+
     // Main method to test all bitwise operations
     public static void main(String[] args) {
 
