@@ -1,33 +1,75 @@
 # Problems Solved Using Bitwise Operators
 
 ## Problem Statement
-This program demonstrates how to **set (turn ON)** and **unset (turn OFF)** specific bits in a number using **bitwise operators** in Java.  
-Bitwise operations enable direct manipulation of binary bits, allowing efficient control over data representation and computation at the hardware level.
+This program demonstrates common **bitwise operations** used to manipulate specific bits of an integer in Java.  
+It includes methods to:
+- **Set (turn ON)** a bit  
+- **Unset (turn OFF)** a bit  
+- **Check** if a specific bit is set  
+- **Toggle (flip)** a bit  
+
+These operations are performed using efficient bit-level logic that directly interacts with binary representation of numbers.
 
 ---
 
 ## Concepts Covered
-1. **Bitwise Left Shift (`<<`)** – Shifts bits to the left, effectively multiplying by powers of two. Commonly used to create bit masks.  
-2. **Bitwise OR (`|`)** – Sets a bit to `1` if either operand has a `1` in that position. Used to **set** bits.  
-3. **Bitwise AND (`&`)** – Sets a bit to `1` only if both operands have a `1` in that position. Used to **retain** bits selectively.  
-4. **Bitwise NOT (`~`)** – Flips all bits; `0` becomes `1` and `1` becomes `0`. Often used for **bit clearing** operations.
+
+1. **Bitwise Left Shift (`<<`)** – Shifts bits left, used to create bit masks.  
+   Example: `1 << (k - 1)` places a single `1` at the k-th bit position.
+
+2. **Bitwise OR (`|`)** – Sets a bit to `1` if either operand’s bit is `1`.  
+   Used to **set** bits.
+
+3. **Bitwise AND (`&`)** – Keeps a bit `1` only if both operands have `1` in that position.  
+   Used to **check** or **unset** bits.
+
+4. **Bitwise XOR (`^`)** – Flips (toggles) bits where bits differ.  
+   Used to **invert** or **toggle** a specific bit.
+
+5. **Bitwise NOT (`~`)** – Inverts all bits (0 → 1 and 1 → 0).  
+   Used when we need to clear a particular bit.
+
+6. **Bitwise Right Shift (`>>`)** – Moves bits right, effectively dividing by powers of two.  
+   Used for bit position checking.
 
 ---
 
 ## Approach Breakdown
 
-### 1. **Setting a Bit**
-To turn ON the k-th bit of a number:
-- Create a mask using `1 << (k - 1)` which positions a single `1` at the target bit position.
-- Perform a bitwise OR (`|`) between the number and mask.
-- This ensures the bit at position `k` becomes `1`, without affecting other bits.
+### 1. **Set a Bit**
+Turns ON the k-th bit of a number.  
+Steps:
+- Create mask `1 << (k - 1)`  
+- Perform OR operation → `num | mask`  
+Result: The k-th bit is always set to `1`.
 
-### 2. **Unsetting a Bit**
-To turn OFF the k-th bit of a number:
-- Create a mask using `1 << (k - 1)`.
-- Invert the mask using `~mask` so that the k-th bit becomes `0` and all others remain `1`.
-- Perform a bitwise AND (`&`) with the number.
-- This clears (sets to 0) the desired bit.
+---
+
+### 2. **Unset a Bit**
+Turns OFF the k-th bit of a number.  
+Steps:
+- Create mask `1 << (k - 1)`  
+- Invert the mask using `~mask`  
+- Perform AND operation → `num & (~mask)`  
+Result: The k-th bit becomes `0`, others remain unchanged.
+
+---
+
+### 3. **Check if k-th Bit is Set**
+Checks whether the k-th bit of a number is `1`.  
+Steps:
+- Create mask `1 << (k - 1)`  
+- Perform AND operation → `(num & mask)`  
+- If result > 0 → bit is set; otherwise not.
+
+---
+
+### 4. **Toggle a Bit**
+Flips (inverts) the k-th bit of a number.  
+Steps:
+- Create mask `1 << (k - 1)`  
+- Perform XOR operation → `num ^ mask`  
+Result: The k-th bit is flipped (1 → 0 or 0 → 1).
 
 ---
 
@@ -35,8 +77,10 @@ To turn OFF the k-th bit of a number:
 
 | Operation | Time Complexity | Space Complexity | Explanation |
 |------------|-----------------|------------------|--------------|
-| `setBit()` | O(1) | O(1) | Involves one shift and one OR operation |
-| `unsetBit()` | O(1) | O(1) | Involves one shift, one NOT, and one AND operation |
+| `setBit()` | O(1) | O(1) | Uses one left shift and one OR operation |
+| `unsetBit()` | O(1) | O(1) | Uses one left shift, NOT, and AND operation |
+| `isKthBitSet()` | O(1) | O(1) | Uses one left shift and one AND operation |
+| `toggleKthBit()` | O(1) | O(1) | Uses one left shift and one XOR operation |
 
 ---
 
@@ -46,16 +90,19 @@ To turn OFF the k-th bit of a number:
 |------------|----------------|----------------|----------------|----------|
 | `setBit(5, 2)` | (5, 2) | 0101 | 0111 | 7 |
 | `unsetBit(15, 4)` | (15, 4) | 1111 | 0111 | 7 |
+| `isKthBitSet(5, 3)` | (5, 3) | 0101 | Bit at position 3 is 1 | true |
+| `toggleKthBit(9, 1)` | (9, 1) | 1001 | 1000 | 8 |
 
 ---
 
 ## Key Takeaways
-- Bitwise operations are **fast and memory-efficient**, directly interacting with hardware bits.  
-- Essential for systems where performance and memory optimization are crucial, such as:
-  - Embedded systems  
-  - Cryptography  
-  - Graphics programming  
-  - Competitive programming problems involving binary logic  
-- Understanding bitwise operations builds strong **low-level programming** intuition.
+- Bitwise operations are **fast** (constant time) and operate directly on binary representation.  
+- They are commonly used in:
+  - **Flags and status registers**
+  - **Compression algorithms**
+  - **Cryptography**
+  - **Low-level system programming**
+  - **Game development** and **hardware interfacing**
+- Understanding these helps in **writing efficient, memory-friendly, and performance-optimized code**.
 
 ---
