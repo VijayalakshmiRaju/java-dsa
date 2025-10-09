@@ -21,24 +21,67 @@ public class ProblemsSolvedUsingBitwiseOperators {
         return num & (~mask);
     }
 
-    // Main method with test cases
+    // Function to check whether the k-th bit is set (1) or not
+    public static boolean isKthBitSet(int num, int k) {
+        // Create a mask with 1 at k-th position
+        int mask = 1 << (k - 1);
+        // Perform AND; if result > 0, bit is set
+        return (num & mask) != 0;
+    }
+
+    // Function to toggle (flip) the k-th bit of a number
+    public static int toggleKthBit(int num, int k) {
+        // Create a mask with 1 at k-th position
+        int mask = 1 << (k - 1);
+        // XOR flips the k-th bit (1→0 or 0→1)
+        return num ^ mask;
+    }
+
+    // Main method to test all bitwise operations
     public static void main(String[] args) {
-        int num1 = 5;  // Binary: 0101
-        int bitPos1 = 2;
 
-        int num2 = 15; // Binary: 1111
-        int bitPos2 = 4;
+        // Example 1: Set bit
+        int num1 = 5;    // Binary: 0101
+        int bitPos1 = 2; // We’ll set the 2nd bit
 
-        System.out.println("----- Bitwise Operations -----\n");
+        // Example 2: Unset bit
+        int num2 = 15;   // Binary: 1111
+        int bitPos2 = 4; // We’ll unset the 4th bit
 
-        // Test case 1: Setting a bit
+        // Example 3: Check bit
+        int num3 = 5;    // Binary: 0101
+        int bitPos3 = 3; // We’ll check if the 3rd bit is set
+
+        // Example 4: Toggle bit
+        int num4 = 9;    // Binary: 1001
+        int bitPos4 = 1; // We’ll toggle the 1st bit
+
+        System.out.println("========== Bitwise Operations ==========\n");
+
+        // ---- Test 1: Set Bit ----
         int setResult = setBit(num1, bitPos1);
-        System.out.println("Original number: " + num1 + " (Binary: " + Integer.toBinaryString(num1) + ")");
-        System.out.println("After setting bit " + bitPos1 + ": " + setResult + " (Binary: " + Integer.toBinaryString(setResult) + ")\n");
+        System.out.println("SET BIT OPERATION:");
+        System.out.println("Original Number : " + num1 + " (Binary: " + Integer.toBinaryString(num1) + ")");
+        System.out.println("After setting bit " + bitPos1 + " : " + setResult + " (Binary: " + Integer.toBinaryString(setResult) + ")\n");
 
-        // Test case 2: Unsetting a bit
+        // ---- Test 2: Unset Bit ----
         int unsetResult = unsetBit(num2, bitPos2);
-        System.out.println("Original number: " + num2 + " (Binary: " + Integer.toBinaryString(num2) + ")");
-        System.out.println("After unsetting bit " + bitPos2 + ": " + unsetResult + " (Binary: " + Integer.toBinaryString(unsetResult) + ")");
+        System.out.println("UNSET BIT OPERATION:");
+        System.out.println("Original Number : " + num2 + " (Binary: " + Integer.toBinaryString(num2) + ")");
+        System.out.println("After unsetting bit " + bitPos2 + " : " + unsetResult + " (Binary: " + Integer.toBinaryString(unsetResult) + ")\n");
+
+        // ---- Test 3: Check if Bit is Set ----
+        boolean isSet = isKthBitSet(num3, bitPos3);
+        System.out.println("CHECK BIT OPERATION:");
+        System.out.println("Number : " + num3 + " (Binary: " + Integer.toBinaryString(num3) + ")");
+        System.out.println("Is bit " + bitPos3 + " set? : " + (isSet ? "YES" : "NO") + "\n");
+
+        // ---- Test 4: Toggle Bit ----
+        int toggleResult = toggleKthBit(num4, bitPos4);
+        System.out.println("TOGGLE BIT OPERATION:");
+        System.out.println("Original Number : " + num4 + " (Binary: " + Integer.toBinaryString(num4) + ")");
+        System.out.println("After toggling bit " + bitPos4 + " : " + toggleResult + " (Binary: " + Integer.toBinaryString(toggleResult) + ")\n");
+
+        System.out.println("========================================");
     }
 }
