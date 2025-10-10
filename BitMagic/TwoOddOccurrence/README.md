@@ -9,7 +9,6 @@ Input: arr = [4, 2, 4, 5, 2, 3, 3, 1]
 Output: 5, 1
 Explanation: 5 and 1 appear only once (odd), while all others appear even times.
 
-
 ---
 
 ## Approaches
