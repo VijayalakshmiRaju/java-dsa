@@ -78,3 +78,5 @@ Explanation: 5 and 1 appear only once (odd), while all others appear even times.
 - The **Naive approach** is easy to implement but inefficient for large arrays (O(n²)).
 - The **Optimized XOR approach** is linear in time and constant in space, ideal for large arrays.
 - Both approaches correctly identify the two odd-occurring numbers.
+
+---
