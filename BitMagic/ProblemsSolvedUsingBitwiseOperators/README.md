@@ -47,6 +47,8 @@ These operations are performed using efficient bit-level logic that directly int
 | Multiply by 2 | Shifts bits left by 1 | `num << 1` |
 | Divide by 2 | Shifts bits right by 1 | `num >> 1` |
 | Swap Numbers | Uses XOR logic | `a ^= b; b ^= a; a ^= b;` |
+| **Flip Bits** | Flips all bits within an n-bit range using `(1 << n) - 1 - num`. |
+| **Find log₂(num)** | Calculates floor(log₂(num)) by repeated right shifting. |
 
 ---
 
@@ -124,6 +126,29 @@ num1 = num1 ^ num2
 
 ---
 
+### 8. **Flip All Bits (Within n-bit Representation)**
+
+Flips all bits (1→0, 0→1) of a number **within a specified bit range**.
+
+**Logic:**
+- Create a mask with all bits set to 1 for `n` bits → `(1 << n) - 1`  
+  Example: For `n = 4`, `(1 << 4) - 1 = 15` → Binary: `1111`
+- Subtract the number from this mask → `allOnes - num`
+
+**Example:**
+num = 5 → Binary: 0101
+n = 4
+allOnes = 1111 (15)
+Result = 1111 - 0101 = 1010 → 10
+
+---
+
+### 9. **log₂(num)**
+Repeatedly divide (right shift) until number becomes 0.  
+Each shift counts as dividing by 2.
+
+---
+
 ## Complexity Analysis
 
 | Operation | Time Complexity | Space Complexity | Explanation |
@@ -135,6 +160,8 @@ num1 = num1 ^ num2
 | `multiplyByTwo()` | O(1) | O(1) | Uses left shift |
 | `divideByTwo()` | O(1) | O(1) | Uses right shift |
 | `swapNumbers()` | O(1) | O(1) | Uses XOR logic without temporary variable |
+| `flipBits()` | O(1) | O(1) | Creates an all-ones mask `(1 << n) - 1` and subtracts the number to flip all bits |
+| `log2()` | O(log n) | O(1) | Repeatedly right shifts until the number becomes zero, counting steps |
 
 ---
 
@@ -149,6 +176,8 @@ num1 = num1 ^ num2
 | `multiplyByTwo(8)` | (8) | 1000 | 10000 | 16 |
 | `divideByTwo(8)` | (8) | 1000 | 100 | 4 |
 | `swapNumbers(4, 7)` | (4, 7) | 0100, 0111 | 0111, 0100 | Swapped |
+| `flipBits(5, 4)` | (5, 4) | 0101 | 1010 → (1111 - 0101) | 10 |
+| `log2(16)` | (16) | 10000 | Divide by 2 → 4 times | 4 |
 
 ---
 
