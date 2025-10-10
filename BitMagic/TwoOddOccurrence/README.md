@@ -1,82 +1,80 @@
-# Two Odd Occurrence
+# Two Odd Occurrence Problem
 
 ## Problem Statement
-Given an array of integers where **exactly two elements occur an odd number of times** and all other elements occur an even number of times,  
+Given an integer array where **exactly two elements occur an odd number of times** and all other elements occur an even number of times,  
 find and return those two odd-occurring elements.
 
----
+**Example:**
+Input: arr = [4, 2, 4, 5, 2, 3, 3, 1]
+Output: 5, 1
+Explanation: 5 and 1 appear only once (odd), while all others appear even times.
 
-## Example
-**Input:**
-arr = [4, 2, 4, 5, 2, 3, 3, 1]
-
-**Output:**
-5 and 1
-
-
-**Explanation:**
-- 4 → appears 2 times (even)
-- 2 → appears 2 times (even)
-- 5 → appears 1 time (odd)
-- 3 → appears 2 times (even)
-- 1 → appears 1 time (odd)
-
-Hence, the two odd-occurring numbers are **5** and **1**.
 
 ---
 
-## Breakdown of Naive Approach
+## Approaches
 
-### Step 1: Iterate through each element
-Use two nested loops — for every element `arr[i]`, count how many times it appears in the array.
+### 1. Naive Approach
+- Use two nested loops to count occurrences of each element.
+- If an element occurs an odd number of times and has not been added before, store it in the result array.
+- Stop when both odd-occurring elements are found.
 
-### Step 2: Count occurrences
-For each element, use an inner loop to count all matching occurrences.
+**Steps:**
+1. Iterate through each element in the array.
+2. Count its occurrences using an inner loop.
+3. If count is odd and element is not already added, store it.
+4. Return the result array of size 2.
 
-### Step 3: Check if count is odd
-If the count of a number is odd, add it to the result array (if not already added).
-
-### Step 4: Avoid duplicates
-Ensure the same odd-occurring number is not added twice.
-
-### Step 5: Return the two odd-occurring numbers
-After the traversal, return the two unique odd-occurring numbers.
-
----
-
-## Example Walkthrough
-For `arr = [4, 2, 4, 5, 2, 3, 3, 1]`:
-
-| Element | Count | Odd/Even | Action |
-|----------|--------|-----------|--------|
-| 4 | 2 | Even | Skip |
-| 2 | 2 | Even | Skip |
-| 5 | 1 | Odd | Add to result |
-| 3 | 2 | Even | Skip |
-| 1 | 1 | Odd | Add to result |
-
-Result → `[5, 1]`
+**Time Complexity:** O(n²)  
+**Space Complexity:** O(1)
 
 ---
 
-## Edge Cases
+### 2. Optimized XOR Approach
+- Use XOR to cancel out all even-occurring elements.
+- XOR of all elements gives `xor = num1 ^ num2` where num1 and num2 are the two odd-occurring numbers.
+- Find the rightmost set bit in `xor` to divide elements into two groups.
+- XOR each group separately to find the two odd-occurring numbers.
 
-| Case | Input | Expected Output | Explanation |
-|------|--------|-----------------|--------------|
-| Both odd elements are distinct | [4, 2, 4, 5, 2, 3, 3, 1] | 5, 1 | Normal case |
-| Odd elements at start and end | [9, 4, 4, 6, 6, 3, 3, 9, 1] | 1, 9 | Both edges odd |
-| Only two elements (both odd) | [7, 8] | 7, 8 | Each appears once |
-| Large even frequency | [2, 2, 2, 2, 5, 6, 6, 6, 6, 7] | 5, 7 | 5 and 7 appear once |
-| All even elements | [1, 1, 2, 2, 3, 3] | Undefined | No odd occurrence (invalid input) |
+**Steps:**
+1. XOR all elements → result = num1 ^ num2
+2. Find the rightmost set bit in XOR.
+3. Divide elements into two groups based on that bit.
+4. XOR each group → gives num1 and num2.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
 
 ---
 
 ## Complexity Analysis
 
-| Operation | Time Complexity | Space Complexity | Explanation |
-|------------|-----------------|------------------|--------------|
-| Counting each element | O(n²) | O(1) | Nested loops |
-| Result storage | O(1) | O(1) | Constant space for two elements |
-| **Total** | **O(n²)** | **O(1)** | Quadratic time, constant space |
+| Method                  | Time Complexity | Space Complexity | Description                                      |
+|-------------------------|----------------|-----------------|------------------------------------------------|
+| Naive Approach          | O(n²)          | O(1)            | Nested loops to count occurrences              |
+| Optimized XOR Approach  | O(n)           | O(1)            | Bitwise XOR technique to find numbers efficiently |
 
 ---
+
+## Test Cases with Example Outputs
+
+| #  | Input Array                            | Naive Output      | Optimized XOR Output | Notes                                   |
+|----|----------------------------------------|-----------------|-------------------|-----------------------------------------|
+| 1  | [4, 2, 4, 5, 2, 3, 3, 1]              | 5, 1             | 5, 1               | Normal case                             |
+| 2  | [9, 4, 4, 6, 6, 3, 3, 9, 1]           | 1, 9             | 1, 9               | Odd elements at start/end                |
+| 3  | [7, 8]                                | 7, 8             | 7, 8               | Only two elements, both odd             |
+| 4  | [1, 1, 2, 2, 3, 3]                     | None / Invalid   | 0, 0               | No odd-occurring elements               |
+| 5  | [5, 5, 7, 7, 7, 8, 8, 9, 9, 9]        | 7, 9             | 7, 9               | Odd elements in middle                   |
+| 6  | [10, 10, 10, 10, 5, 6, 6, 6, 6, 7]    | 5, 7             | 5, 7               | Large even frequencies                   |
+| 7  | [4, -1, 2, -1, 2, 5, 4, 7, 7, 9]      | 5, 9             | 5, 9               | Includes negative numbers                |
+
+**Notes:**
+- For the **Naive approach**, if there are no odd-occurring numbers, it may return empty or invalid output.
+- For the **XOR approach**, zero values indicate no odd-occurring numbers were found.
+
+---
+
+## Summary
+- The **Naive approach** is easy to implement but inefficient for large arrays (O(n²)).
+- The **Optimized XOR approach** is linear in time and constant in space, ideal for large arrays.
+- Both approaches correctly identify the two odd-occurring numbers.
