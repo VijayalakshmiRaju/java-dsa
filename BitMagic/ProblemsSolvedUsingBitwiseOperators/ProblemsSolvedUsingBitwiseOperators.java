@@ -59,6 +59,46 @@ public class ProblemsSolvedUsingBitwiseOperators {
         System.out.println("After swapping  → num1: " + num1 + ", num2: " + num2);
     }
 
+    // Function to flip (invert) all bits of a number within n-bit representation
+    public static int flipBits(int num, int n) {
+
+        // Step 1: Create a number that has all n bits set to 1.
+        // Example: If n = 4 → (1 << 4) = 16 → 16 - 1 = 15 → Binary: 1111
+        // So 'allOnes' will look like a mask of n 1's: 1111 (in binary)
+        int allOnes = (1 << n) - 1;
+
+        // Step 2: Subtract 'num' from 'allOnes' to flip the bits.
+        // Why this works:
+        //   Suppose num = 5 (binary 0101) and n = 4 → allOnes = 1111 (15)
+        //   1111 - 0101 = 1010 (which is the bitwise complement of 0101 within 4 bits)
+        //   So effectively, this operation inverts all bits inside the n-bit boundary.
+        return allOnes - num;
+    }
+
+    // Function to compute floor(log2(num))
+// Returns the position of the highest set bit (0-indexed)
+    public static int log2(int num) {
+
+        // Initialize result as 0, which will hold the exponent value
+        int result = 0;
+
+        // Step 1: Keep right-shifting (dividing by 2) until num becomes 0.
+        // Each shift essentially moves to the next power of 2.
+        // Example: num = 16 (10000 in binary)
+        //   → After 1st shift: 1000 (8)
+        //   → After 2nd shift: 100 (4)
+        //   → After 3rd shift: 10 (2)
+        //   → After 4th shift: 1 (1)
+        //   → After 5th shift: 0 (loop stops)
+        // Number of shifts = 4 → log2(16) = 4
+        while ((num >>= 1) != 0) {
+            result++;
+        }
+
+        // Step 2: Return the number of shifts performed (the exponent)
+        return result;
+    }
+
     // Main method to test all bitwise operations
     public static void main(String[] args) {
         System.out.println("========== Bitwise Operations ==========\n");
@@ -107,6 +147,22 @@ public class ProblemsSolvedUsingBitwiseOperators {
         // ---- Test 6: Swap Numbers ----
         System.out.println("SWAP OPERATION:");
         swapNumbers(4, 7);
+
+        System.out.println();
+        // ---- Test 7: Flip Bits ----
+        int num6 = 5, bitCount = 4;
+        int flipped = flipBits(num6, bitCount);
+        System.out.println("FLIP BITS OPERATION:");
+        System.out.println("Original Number : " + num6 + " (Binary: " + Integer.toBinaryString(num6) + ")");
+        System.out.println("After flipping within " + bitCount + " bits : " + flipped + " (Binary: " + Integer.toBinaryString(flipped) + ")\n");
+
+        // ---- Test 8: Log2 ----
+        int num7 = 16;
+        int logResult = log2(num7);
+        System.out.println("LOG2 OPERATION:");
+        System.out.println("Number : " + num7);
+        System.out.println("log2(" + num7 + ") = " + logResult + "\n");
+
         System.out.println("\n========================================");
     }
 }
