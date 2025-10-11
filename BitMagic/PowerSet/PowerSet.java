@@ -28,33 +28,20 @@ public class PowerSet {
     }
 
     public static void main(String[] args) {
-        // Test Case 1: Normal case
-        System.out.println("Test Case 1: [1, 2, 3]");
-        int[] arr1 = {1, 2, 3};
-        generatePowerSet(arr1);
-        System.out.println();
+        // Array of test cases
+        int[][] testCases = {
+                {1, 2, 3},      // Normal case
+                {5},            // Single element
+                {},             // Empty array
+                {-1, 0, 2},     // Negative numbers
+                {10, 20, 30, 40} // Larger array
+        };
 
-        // Test Case 2: Single element
-        System.out.println("Test Case 2: [5]");
-        int[] arr2 = {5};
-        generatePowerSet(arr2);
-        System.out.println();
-
-        // Test Case 3: Empty array
-        System.out.println("Test Case 3: []");
-        int[] arr3 = {};
-        generatePowerSet(arr3);
-        System.out.println();
-
-        // Test Case 4: Array with negative numbers
-        System.out.println("Test Case 4: [-1, 0, 2]");
-        int[] arr4 = {-1, 0, 2};
-        generatePowerSet(arr4);
-        System.out.println();
-
-        // Test Case 5: Array with larger numbers
-        System.out.println("Test Case 5: [10, 20, 30, 40]");
-        int[] arr5 = {10, 20, 30, 40};
-        generatePowerSet(arr5);
+        // Loop through all test cases
+        for (int t = 0; t < testCases.length; t++) {
+            System.out.println("Test Case " + (t + 1) + ": " + java.util.Arrays.toString(testCases[t]));
+            generatePowerSet(testCases[t]);
+            System.out.println();
+        }
     }
 }
