@@ -34,54 +34,29 @@ public class RemoveDuplicatesFromSortedArray {
     // Main method with multiple test cases
     public static void main(String[] args) {
 
-        // Test Case 1: Normal case with duplicates
-        int[] arr1 = {1, 1, 2, 2, 3, 4, 4};
-        System.out.print("Initial array: ");
-        printArray(arr1, arr1.length);
-        int len1 = removeDuplicates(arr1);
-        System.out.print("After removing duplicates: ");
-        printArray(arr1, len1);
-        System.out.println("New length: " + len1);
-        System.out.println("------------------------------");
+        // Store all test cases in a 2D array
+        int[][] testCases = {
+                {1, 1, 2, 2, 3, 4, 4},   // Normal case with duplicates
+                {5, 5, 5, 5, 5},         // All elements same
+                {1, 2, 3, 4, 5},         // Already unique
+                {},                      // Empty array
+                {7}                      // Single element
+        };
 
-        // Test Case 2: All elements same
-        int[] arr2 = {5, 5, 5, 5, 5};
-        System.out.print("Initial array: ");
-        printArray(arr2, arr2.length);
-        int len2 = removeDuplicates(arr2);
-        System.out.print("After removing duplicates: ");
-        printArray(arr2, len2);
-        System.out.println("New length: " + len2);
-        System.out.println("------------------------------");
+        // Iterate over test cases using a for loop
+        for (int t = 0; t < testCases.length; t++) {
+            int[] arr = testCases[t];
 
-        // Test Case 3: All elements unique (no duplicates)
-        int[] arr3 = {1, 2, 3, 4, 5};
-        System.out.print("Initial array: ");
-        printArray(arr3, arr3.length);
-        int len3 = removeDuplicates(arr3);
-        System.out.print("After removing duplicates: ");
-        printArray(arr3, len3);
-        System.out.println("New length: " + len3);
-        System.out.println("------------------------------");
+            System.out.println("Test Case " + (t + 1) + ":");
+            System.out.print("Initial array: ");
+            printArray(arr, arr.length);
 
-        // Test Case 4: Empty array
-        int[] arr4 = {};
-        System.out.print("Initial array: ");
-        printArray(arr4, arr4.length);
-        int len4 = removeDuplicates(arr4);
-        System.out.print("After removing duplicates: ");
-        printArray(arr4, len4);
-        System.out.println("New length: " + len4);
-        System.out.println("------------------------------");
+            int len = removeDuplicates(arr);
 
-        // Test Case 5: Single element array
-        int[] arr5 = {7};
-        System.out.print("Initial array: ");
-        printArray(arr5, arr5.length);
-        int len5 = removeDuplicates(arr5);
-        System.out.print("After removing duplicates: ");
-        printArray(arr5, len5);
-        System.out.println("New length: " + len5);
-        System.out.println("------------------------------");
+            System.out.print("After removing duplicates: ");
+            printArray(arr, len);
+            System.out.println("New length: " + len);
+            System.out.println("------------------------------");
+        }
     }
 }
