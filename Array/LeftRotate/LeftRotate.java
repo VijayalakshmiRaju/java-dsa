@@ -70,64 +70,55 @@ public class LeftRotate {
     }
 
     public static void main(String[] args) {
-        System.out.println("=========== LEFT ROTATION TESTS ===========");
+        System.out.println("=========== LEFT ROTATION TESTS (Using for loop) ===========");
 
-        // Test Case 1: Basic rotation
-        int[] arr1 = {1, 2, 3, 4, 5};
-        System.out.println("\nTest Case 1: Rotate by 3 positions (Naive)");
-        printArray("Before:", arr1);
-        leftRotateNaive(arr1, 3);
-        printArray("After :", arr1);
+        // --- Define test cases ---
+        int[][] testArrays = {
+                {1, 2, 3, 4, 5},     // basic case
+                {1, 2, 3, 4, 5},     // same array for optimized
+                {10, 20, 30, 40},    // rotate by 0
+                {5, 10, 15, 20},     // rotate by array length
+                {9, 8, 7, 6, 5},     // rotate > length
+                {42},                // single element
+                {1, 2},              // two elements
+                {}                   // empty array
+        };
 
-        // Test Case 2: Optimized rotation with same k
-        int[] arr2 = {1, 2, 3, 4, 5};
-        System.out.println("\nTest Case 2: Rotate by 3 positions (Optimized)");
-        printArray("Before:", arr2);
-        leftRotateOptimized(arr2, 3);
-        printArray("After :", arr2);
+        int[] rotations = {3, 3, 0, 4, 7, 3, 1, 2};
+        String[] descriptions = {
+                "Rotate by 3 (Naive)",
+                "Rotate by 3 (Optimized)",
+                "Rotate by 0 (No Change)",
+                "Rotate by array length (4)",
+                "Rotate by 7 (> length)",
+                "Single element array",
+                "Two-element array (Rotate by 1)",
+                "Empty array"
+        };
 
-        // Test Case 3: Rotate by 0 (no rotation)
-        int[] arr3 = {10, 20, 30, 40};
-        System.out.println("\nTest Case 3: Rotate by 0 (No Change)");
-        printArray("Before:", arr3);
-        leftRotateOptimized(arr3, 0);
-        printArray("After :", arr3);
+        // --- Run test cases in loop ---
+        for (int i = 0; i < testArrays.length; i++) {
+            System.out.println("\nTest Case " + (i + 1) + ": " + descriptions[i]);
 
-        // Test Case 4: Rotate by array length (full rotation -> same array)
-        int[] arr4 = {5, 10, 15, 20};
-        System.out.println("\nTest Case 4: Rotate by array length (4)");
-        printArray("Before:", arr4);
-        leftRotateOptimized(arr4, arr4.length);
-        printArray("After :", arr4);
+            // Copy original array to preserve it for printing
+            int[] arr = Arrays.copyOf(testArrays[i], testArrays[i].length);
+            printArray("Before:", arr);
 
-        // Test Case 5: Rotate by more than array length
-        int[] arr5 = {9, 8, 7, 6, 5};
-        System.out.println("\nTest Case 5: Rotate by 7 (> length)");
-        printArray("Before:", arr5);
-        leftRotateOptimized(arr5, 7);
-        printArray("After :", arr5);
+            // Handle empty array
+            if (arr.length == 0) {
+                printArray("After :", arr);
+                continue;
+            }
 
-        // Test Case 6: Single element array
-        int[] arr6 = {42};
-        System.out.println("\nTest Case 6: Single element array");
-        printArray("Before:", arr6);
-        leftRotateOptimized(arr6, 3);
-        printArray("After :", arr6);
+            // Use naive for first test, optimized for others
+            if (i == 0) {
+                leftRotateNaive(arr, rotations[i]);
+            } else {
+                leftRotateOptimized(arr, rotations[i]);
+            }
 
-        // Test Case 7: Two-element array
-        int[] arr7 = {1, 2};
-        System.out.println("\nTest Case 7: Two-element array (Rotate by 1)");
-        printArray("Before:", arr7);
-        leftRotateOptimized(arr7, 1);
-        printArray("After :", arr7);
-
-        // Test Case 8: Empty array (Edge Case)
-        int[] arr8 = {};
-        System.out.println("\nTest Case 8: Empty array");
-        printArray("Before:", arr8);
-        if (arr8.length > 0)
-            leftRotateOptimized(arr8, 2);
-        printArray("After :", arr8);
+            printArray("After :", arr);
+        }
 
         System.out.println("\n=========== END OF TESTS ===========");
     }
