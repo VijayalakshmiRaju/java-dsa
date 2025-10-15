@@ -9,7 +9,6 @@ Example:
 Input: arr = [1, 2, 3, 4, 5], k = 2
 Output: [3, 4, 5, 1, 2]
 
-
 ---
 
 ## Approaches
@@ -75,7 +74,6 @@ This approach reduces the time complexity to `O(n)`.
 ---
 
 ## Example Output
-
 =========== LEFT ROTATION TESTS (Using for loop) ===========
 
 Test Case 1: Rotate by 3 (Naive)
