@@ -76,61 +76,37 @@ public class LeadersInArray {
     }
 
     public static void main(String[] args) {
+        // All test cases
+        int[][] testCases = {
+                {16, 17, 4, 3, 5, 2},     // Standard case
+                {5, 5, 5, 5, 5},          // All elements equal
+                {10, 9, 8, 7, 6},         // Strictly decreasing
+                {1, 2, 3, 4, 5},          // Strictly increasing
+                {42},                     // Single element
+                {},                       // Empty array
+                {-1, -2, -3, 0, -4},      // Negative numbers
+                {100, 50, 60, 30, 20, 10} // Mixed large/small numbers
+        };
 
-        // --- Test Case 1: Standard array ---
-        int[] arr1 = {16, 17, 4, 3, 5, 2};
-        System.out.println("Test Case 1: Standard array " + Arrays.toString(arr1));
-        printLeadersNaive(arr1);
-        printLeadersOptimized(arr1);
-        System.out.println();
+        String[] descriptions = {
+                "Standard array",
+                "All elements equal",
+                "Strictly decreasing array",
+                "Strictly increasing array",
+                "Single element array",
+                "Empty array",
+                "Array with negative numbers",
+                "Mixed large and small numbers"
+        };
 
-        // --- Test Case 2: All elements equal ---
-        int[] arr2 = {5, 5, 5, 5, 5};
-        System.out.println("Test Case 2: All elements equal " + Arrays.toString(arr2));
-        printLeadersNaive(arr2);
-        printLeadersOptimized(arr2);
-        System.out.println();
+        System.out.println("=== Leaders in Array: Naive vs Optimized Approaches ===\n");
 
-        // --- Test Case 3: Strictly decreasing array ---
-        int[] arr3 = {10, 9, 8, 7, 6};
-        System.out.println("Test Case 3: Strictly decreasing array " + Arrays.toString(arr3));
-        printLeadersNaive(arr3);
-        printLeadersOptimized(arr3);
-        System.out.println();
-
-        // --- Test Case 4: Strictly increasing array ---
-        int[] arr4 = {1, 2, 3, 4, 5};
-        System.out.println("Test Case 4: Strictly increasing array " + Arrays.toString(arr4));
-        printLeadersNaive(arr4);
-        printLeadersOptimized(arr4);
-        System.out.println();
-
-        // --- Test Case 5: Single element array ---
-        int[] arr5 = {42};
-        System.out.println("Test Case 5: Single element array " + Arrays.toString(arr5));
-        printLeadersNaive(arr5);
-        printLeadersOptimized(arr5);
-        System.out.println();
-
-        // --- Test Case 6: Empty array ---
-        int[] arr6 = {};
-        System.out.println("Test Case 6: Empty array " + Arrays.toString(arr6));
-        printLeadersNaive(arr6);
-        printLeadersOptimized(arr6);
-        System.out.println();
-
-        // --- Test Case 7: Array with negative numbers ---
-        int[] arr7 = {-1, -2, -3, 0, -4};
-        System.out.println("Test Case 7: Array with negative numbers " + Arrays.toString(arr7));
-        printLeadersNaive(arr7);
-        printLeadersOptimized(arr7);
-        System.out.println();
-
-        // --- Test Case 8: Mixed large and small numbers ---
-        int[] arr8 = {100, 50, 60, 30, 20, 10};
-        System.out.println("Test Case 8: Mixed large and small numbers " + Arrays.toString(arr8));
-        printLeadersNaive(arr8);
-        printLeadersOptimized(arr8);
-        System.out.println();
+        // Iterate using a for loop to run all test cases
+        for (int i = 0; i < testCases.length; i++) {
+            System.out.println("Test Case " + (i + 1) + ": " + descriptions[i]);
+            printLeadersNaive(testCases[i]);
+            printLeadersOptimized(testCases[i]);
+            System.out.println();
+        }
     }
 }
