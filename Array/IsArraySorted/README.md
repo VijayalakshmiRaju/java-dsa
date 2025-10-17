@@ -16,26 +16,26 @@ If the array satisfies this property, return `true`; otherwise, return `false`.
 2. Return `false` if any `arr[i] > arr[j]`.
 3. Return `true` if no such violation is found.
 
-| Complexity | Description |
-|-------------|-------------|
-| **Time** | O(n²) – Each element compared with all elements to its right |
-| **Space** | O(1) – Constant space |
-
 ---
 
 ## Approach 2: Optimized Method
 ### Idea
-- A single pass is enough to check if every adjacent pair satisfies `arr[i] <= arr[i + 1]`.
+- A single pass is enough to verify that every adjacent pair satisfies `arr[i] <= arr[i + 1]`.
+- If any pair violates this condition, the array is not sorted.
 
 ### Steps
 1. Traverse the array once.
 2. If any `arr[i] > arr[i + 1]`, return `false`.
 3. If the loop completes, return `true`.
 
-| Complexity | Description |
-|-------------|-------------|
-| **Time** | O(n) – Single traversal |
-| **Space** | O(1) – Constant space |
+---
+
+## Time and Space Complexities
+
+| Approach | Time Complexity | Space Complexity | Explanation |
+|-----------|-----------------|------------------|--------------|
+| Naive | O(n²) | O(1) | Compares each element with all elements to its right |
+| Optimized | O(n) | O(1) | Checks each adjacent pair only once |
 
 ---
 
@@ -48,7 +48,7 @@ If the array satisfies this property, return `true`; otherwise, return `false`.
 | `[1, 2, 3, 4, 5]` | Already sorted | Sorted |
 | `[5, 4, 3, 2, 1]` | Strictly decreasing | Not Sorted |
 | `[1, 1, 1, 1, 1]` | All elements same | Sorted |
-| `[1, 2, 2, 3, 4]` | Non-decreasing | Sorted |
+| `[1, 2, 2, 3, 4]` | Non-decreasing with duplicates | Sorted |
 | `[1, 3, 2, 4, 5]` | Unsorted in between | Not Sorted |
 | `[10, 20, 30, 25, 40, 50]` | One unsorted pair | Not Sorted |
 | `[1, 2, 3, 4, 5, 6, 7, 8, 9]` | Large sorted array | Sorted |
@@ -61,6 +61,8 @@ If the array satisfies this property, return `true`; otherwise, return `false`.
 ---
 
 ## Sample Output
+
+=== Checking if Arrays are Sorted ===
 
 Test Case 1: []
 Naive Approach Result -> Sorted
