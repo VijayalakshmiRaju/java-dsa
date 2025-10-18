@@ -9,7 +9,6 @@ Your task is to find the **maximum possible profit**.
 ---
 
 ## Approach 1 — Naive Recursive Method (Brute Force)
-
 ### Idea:
 - Try **every possible pair** of buy (`i`) and sell (`j`) days.
 - For every valid transaction (`arr[j] > arr[i]`):
@@ -27,6 +26,7 @@ This ensures we explore **all valid buy-sell possibilities**, but at the cost of
 `arr = [1, 5, 3, 8, 12]`
 
 **Explanation:**
+
 - Buy at 1, sell at 5 → profit = 4  
 - Buy at 3, sell at 12 → profit = 9  
 **Total = 13**
@@ -52,7 +52,6 @@ This ensures we explore **all valid buy-sell possibilities**, but at the cost of
 ---
 
 ## Approach 2 — Optimized Linear Method
-
 ### Idea:
 - Every **increasing sequence** contributes profit.
 - Whenever `arr[i] > arr[i-1]`, add the difference to total profit.
