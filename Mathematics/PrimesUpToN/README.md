@@ -6,76 +6,87 @@ A **prime number** is a number greater than 1 that has no divisors other than 1 
 
 ---
 
-## Approach
+## Approaches Implemented
 
-### 1. Prime Check (`isPrime()`)
-- A number `n` is prime if it is not divisible by any integer from `2` to `√n`.
-- Edge cases:
-  - If `n <= 1` → Not prime  
-  - If `n == 2 or 3` → Prime
+### 1. Naive Approach (`isPrime()` + `printPrimesUpToN()`)
+- For every number from 2 to N:
+  - Check if it is divisible by any number between 2 and √N.
+  - If not divisible, print it as a prime number.
+- Works well for small values of N.
 
-### 2. Range Iteration (`printPrimesUpToN()`)
-- Loop through all numbers from `2` to `N`.
-- Print each number that passes the `isPrime()` check.
+### 2. Optimized Approach — **Sieve of Eratosthenes** (`printPrimesUsingSieve()`)
+- Create a boolean array `prime[]` where each index represents whether the number is prime.
+- Initially mark all numbers ≥ 2 as `true`.
+- Starting from 2, mark all multiples of each prime as `false`.
+- Print all indices still marked as `true` (i.e., prime numbers).
+- Much faster for large values of N.
 
 ---
 
 ## Algorithm Steps
-1. Input an integer `N`.
-2. For each number `i` in range `2` to `N`:
-   - Check if `i` is prime using the `isPrime()` function.
-   - If yes, print it.
-3. Handle edge cases where `N <= 1` (no primes exist).
+
+### Naive Approach
+1. Loop `i` from 2 to N.
+2. For each `i`, check divisibility from 2 to √i.
+3. If divisible → not prime.
+4. Else, print `i`.
+
+### Sieve of Eratosthenes
+1. Create a boolean array `prime[n + 1]`, initialize all elements as `true`.
+2. Start from `val = 2` up to √N.
+3. For each `val`, if it's marked `true`, mark all its multiples as `false`.
+4. After the loop, all indices marked `true` represent prime numbers.
 
 ---
 
 ## Complexity Analysis
 
-| Operation | Time Complexity | Explanation |
-|------------|-----------------|-------------|
-| Prime check (per number) | O(√N) | Check divisibility up to √N |
-| Print primes up to N | O(N√N) | For each number, call `isPrime()` |
-| Space Complexity | O(1) | No extra space used |
+| Approach | Time Complexity | Space Complexity | Suitable For |
+|-----------|----------------|------------------|---------------|
+| Naive | O(N√N) | O(1) | Small values of N |
+| Sieve of Eratosthenes | O(N log log N) | O(N) | Large values of N |
 
 ---
 
 ## Test Cases
 
-| Input (N) | Expected Output |
-|------------|----------------|
-| 1 | No prime numbers found. |
-| 2 | 2 |
-| 10 | 2 3 5 7 |
-| 20 | 2 3 5 7 11 13 17 19 |
-| 50 | 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 |
-| -10 | No prime numbers found. |
-| 0 | No prime numbers found. |
+| Test Case | Input (N) | Expected Output |
+|------------|------------|----------------|
+| 1 | 1 | No prime numbers found. |
+| 2 | 2 | 2 |
+| 5 | 5 | 2 3 5 |
+| 10 | 10 | 2 3 5 7 |
+| 20 | 20 | 2 3 5 7 11 13 17 19 |
+| 50 | 50 | 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 |
+| 100 | 100 | 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 |
+| -10 | -10 | No prime numbers found. |
+| 0 | 0 | No prime numbers found. |
 
 ---
 
 ## Sample Output
 
-=== Prime Numbers Up To N ===
+=== PRIME NUMBERS UP TO N ===
 
-Prime numbers less than or equal to 1:
+----- TEST CASE: n = -10 -----
+Prime numbers <= -10 (Naive Approach):
 No prime numbers found.
 
-Prime numbers less than or equal to 2:
-2
+Prime numbers <= -10 (Sieve of Eratosthenes):
+No prime numbers found.
 
-Prime numbers less than or equal to 10:
+----- TEST CASE: n = 10 -----
+Prime numbers <= 10 (Naive Approach):
 2 3 5 7
 
-Prime numbers less than or equal to 20:
-2 3 5 7 11 13 17 19
+Prime numbers <= 10 (Sieve of Eratosthenes):
+2 3 5 7
 
-Prime numbers less than or equal to 50:
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
+----- TEST CASE: n = 100 -----
+Prime numbers <= 100 (Naive Approach):
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 
-Prime numbers less than or equal to -10:
-No prime numbers found.
-
-Prime numbers less than or equal to 0:
-No prime numbers found.
+Prime numbers <= 100 (Sieve of Eratosthenes):
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 
 ---
