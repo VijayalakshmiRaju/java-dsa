@@ -99,43 +99,21 @@ public class PrimesUpToN {
 
         System.out.println("=== PRIME NUMBERS UP TO N ===\n");
 
-        // Test Case 1: Smallest possible input (edge case)
-        // Expect: No primes
-        printPrimesUpToN(0);
-        printPrimesUsingSieve(0);
+        // Array of test inputs including normal and edge cases
+        int[] testCases = { -10, 0, 1, 2, 5, 10, 20, 50, 100 };
 
-        // Test Case 2: Negative input (edge case)
-        // Expect: No primes
-        printPrimesUpToN(-10);
-        printPrimesUsingSieve(-10);
+        // Loop through each test case
+        for (int n : testCases) {
 
-        // Test Case 3: Input = 1 (edge case)
-        // Expect: No primes (since 1 is not prime)
-        printPrimesUpToN(1);
-        printPrimesUsingSieve(1);
+            System.out.println("----- TEST CASE: n = " + n + " -----");
 
-        // Test Case 4: Input = 2 (first prime)
-        // Expect: 2
-        printPrimesUpToN(2);
-        printPrimesUsingSieve(2);
+            // Run naive approach
+            printPrimesUpToN(n);
 
-        // Test Case 5: Input = 10 (small range)
-        // Expect: 2 3 5 7
-        printPrimesUpToN(10);
-        printPrimesUsingSieve(10);
+            // Run sieve approach
+            printPrimesUsingSieve(n);
 
-        // Test Case 6: Input = 20 (normal range)
-        // Expect: 2 3 5 7 11 13 17 19
-        printPrimesUpToN(20);
-        printPrimesUsingSieve(20);
-
-        // Test Case 7: Input = 50 (larger range)
-        // Expect: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
-        printPrimesUpToN(50);
-        printPrimesUsingSieve(50);
-
-        // Test Case 8: Input = 100 (stress test for larger input)
-        printPrimesUpToN(100);
-        printPrimesUsingSieve(100);
+            System.out.println("==============================\n");
+        }
     }
 }
