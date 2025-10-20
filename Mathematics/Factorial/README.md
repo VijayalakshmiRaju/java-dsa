@@ -1,7 +1,7 @@
-# Factorial (Recursive Approach)
+# Factorial (Recursive and Iterative Approaches)
 
 ## Problem Statement
-Write a program to compute the factorial of a given number using recursion.
+Write a program to compute the factorial of a given number using both **recursion** and **iteration**.
 
 A factorial of a non-negative integer `n` is the product of all positive integers less than or equal to `n`.
 
@@ -13,16 +13,25 @@ n! = n × (n - 1) × (n - 2) × ... × 1
 Special Case:  
 `0! = 1`
 
+Factorial is **undefined for negative numbers**.
+
 ---
 
-## Approach
+## Approaches
 
+### Recursive Approach
 | Step | Description |
 |------|--------------|
 | 1 | If the number is 0, return 1 (Base Case). |
 | 2 | Otherwise, multiply the number by factorial of (number - 1). |
-| 3 | Continue the recursion until the number becomes 0. |
-| 4 | Handle negative numbers separately as factorial is undefined for them. |
+| 3 | Recursively call the function until the base case is reached. |
+
+### Iterative Approach
+| Step | Description |
+|------|--------------|
+| 1 | Initialize `result = 1`. |
+| 2 | Multiply `result` by every number from 2 to `n`. |
+| 3 | Return the final result after the loop completes. |
 
 ---
 
@@ -37,36 +46,26 @@ n * factorial(n-1) if n > 0
 
 ## Complexity Analysis
 
-| Type | Complexity | Explanation |
-|------|-------------|-------------|
-| Time Complexity | O(n) | Each recursive call computes factorial of one smaller number until 0. |
-| Space Complexity | O(n) | Recursive calls are stored in the function call stack. |
+| Approach | Time Complexity | Space Complexity | Notes |
+|-----------|----------------|------------------|-------|
+| Recursive | O(n) | O(n) | Function calls add to call stack. |
+| Iterative | O(n) | O(1) | Efficient, no recursion overhead. |
 
 ---
 
 ## Test Cases and Expected Output
 
-| Input | Expected Output |
-|--------|----------------|
-| 0 | 1 |
-| 1 | 1 |
-| 2 | 2 |
-| 5 | 120 |
-| 7 | 5040 |
-| 10 | 3628800 |
-| -3 | Undefined (Negative number) |
-
----
-
-## Sample Output
-
----- Factorial Test Cases ----
-Factorial of 0 = 1
-Factorial of 1 = 1
-Factorial of 2 = 2
-Factorial of 5 = 120
-Factorial of 7 = 5040
-Factorial of 10 = 3628800
-Factorial of -3: Undefined (Negative number)
+| Input | Recursive Result | Iterative Result | Notes |
+|--------|------------------|------------------|-------|
+| 0 | 1 | 1 | Base Case |
+| 1 | 1 | 1 | Simple Case |
+| 2 | 2 | 2 | Small Number |
+| 3 | 6 | 6 | General Case |
+| 5 | 120 | 120 | Common Example |
+| 7 | 5040 | 5040 | Moderate Number |
+| 10 | 3628800 | 3628800 | Larger Number |
+| 12 | 479001600 | 479001600 | Edge of Integer Limit |
+| -1 | Undefined | Undefined | Negative Input |
+| -5 | Undefined | Undefined | Negative Input |
 
 ---
