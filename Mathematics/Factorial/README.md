@@ -41,7 +41,6 @@ factorial(n) =
 1 if n = 0
 n * factorial(n-1) if n > 0
 
-
 ---
 
 ## Complexity Analysis
@@ -69,3 +68,38 @@ n * factorial(n-1) if n > 0
 | -5 | Undefined | Undefined | Negative Input |
 
 ---
+
+## Sample Output
+
+---- Factorial Test Cases ----
+
+Number: 0
+Recursive Result: 1
+Iterative Result: 1
+Number: 1
+Recursive Result: 1
+Iterative Result: 1
+Number: 2
+Recursive Result: 2
+Iterative Result: 2
+Number: 3
+Recursive Result: 6
+Iterative Result: 6
+Number: 5
+Recursive Result: 120
+Iterative Result: 120
+Number: 7
+Recursive Result: 5040
+Iterative Result: 5040
+Number: 10
+Recursive Result: 3628800
+Iterative Result: 3628800
+Number: 12
+Recursive Result: 479001600
+Iterative Result: 479001600
+
+Factorial of -1: Undefined (Negative number)
+
+Factorial of -5: Undefined (Negative number)
+
+---- End of Test Cases ----
