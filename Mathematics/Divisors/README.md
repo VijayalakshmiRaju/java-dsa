@@ -1,12 +1,13 @@
-# Divisors of a Number
+# Divisors of a Number (Naive, Optimized, and List-Based Approaches)
 
 ## Problem Statement
-Given an integer `number`, print all its divisors.  
+Given an integer `number`, print all its **divisors**.  
 A **divisor** of a number is any integer that divides it completely (without leaving a remainder).
 
 ### Example
 Input: 10
 Output: 1 2 5 10
+
 
 
 ---
@@ -16,10 +17,10 @@ Output: 1 2 5 10
 | Input | Output | Explanation |
 |--------|---------|-------------|
 | `10` | `1 2 5 10` | 10 is divisible by 1, 2, 5, and 10 |
-| `13` | `1 13` | 13 is a prime number (divisible only by 1 and itself) |
+| `13` | `1 13` | 13 is a prime number (only divisible by 1 and itself) |
 | `16` | `1 2 4 8 16` | 16 is a perfect square |
 | `1` | `1` | 1 is only divisible by itself |
-| `-12` | No divisors exist for -12 | Negative numbers are not considered |
+| `-12` | No divisors exist for -12 | Negative numbers are invalid |
 | `0` | No divisors exist for 0 | Division by zero is undefined |
 
 ---
@@ -27,9 +28,9 @@ Output: 1 2 5 10
 ## Approach 1: Naive Method
 
 ### Logic
-1. Iterate from `1` to `number`.
-2. For each integer `i`, check if `number % i == 0`.
-3. If true, print `i` (it is a divisor).
+1. Loop through numbers from `1` to `n`.
+2. For each `i`, check if `(n % i == 0)`.
+3. Print `i` if it divides `n` evenly.
 
 ### Pseudocode
 for i = 1 to number:
@@ -41,12 +42,11 @@ print i
 - `number <= 0`: Print a message indicating invalid input.
 - `number = 1`: Only one divisor exists (1).
 
-### Complexity
-
-| Complexity | Description |
-|-------------|-------------|
-| **Time** | O(n) — Checks all numbers from 1 to n |
-| **Space** | O(1) — Uses constant space |
+### Time & Space Complexity
+| Metric | Complexity | Explanation |
+|---------|-------------|-------------|
+| Time | O(n) | Checks all numbers from 1 to n |
+| Space | O(1) | Uses constant memory |
 
 ---
 
@@ -86,7 +86,45 @@ print i and number/i
 
 ---
 
-## Sample Output
+## Approach 3: Using a List (Sorted Output)
+
+### Logic
+- Iterate till `√n` and store divisor pairs.
+- Print smaller divisors immediately.
+- Store larger divisors in a list and print them in reverse order for sorted output.
+
+### Pseudocode
+initialize result = empty list
+for i = 1 to sqrt(n):
+if n % i == 0:
+if n / i == i:
+print i
+else:
+print i
+add (n / i) to result
+print result in reverse
+
+### Time & Space Complexity
+| Metric | Complexity | Explanation |
+|---------|-------------|-------------|
+| Time | O(√n) | Iterates till square root |
+| Space | O(√n) | Stores up to √n divisors in the list |
+
+---
+
+## Edge Cases
+
+| Case | Input | Expected Output |
+|-------|--------|----------------|
+| Zero | 0 | No divisors exist for 0 |
+| Negative Number | -12 | No divisors exist for -12 |
+| One | 1 | Divisors of 1: 1 |
+| Prime Number | 13 | Divisors of 13: 1 13 |
+| Perfect Square | 16 | Divisors of 16: 1 2 4 8 16 |
+
+---
+
+## Sample Test Cases and Expected Outputs
 === Test Case 1: Positive Number (Normal Case) ===
 Divisors of 10: 1 2 5 10
 Divisors of 10 (Optimized): 1 10 2 5
