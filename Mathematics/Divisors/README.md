@@ -8,8 +8,6 @@ A **divisor** of a number is any integer that divides it completely (without lea
 Input: 10
 Output: 1 2 5 10
 
-
-
 ---
 
 ## Examples
@@ -126,40 +124,47 @@ print result in reverse
 
 ## Sample Test Cases and Expected Outputs
 === Test Case 1: Positive Number (Normal Case) ===
-Divisors of 10: 1 2 5 10
-Divisors of 10 (Optimized): 1 10 2 5
+Divisors of 10 (Naive): 1 2 5 10 
+Divisors of 10 (Optimized): 1 10 2 5 
+Divisors of 10 (Sorted Optimized): 1 2 5 10 
 
 === Test Case 2: Prime Number ===
-Divisors of 13: 1 13
-Divisors of 13 (Optimized): 1 13
+Divisors of 13 (Naive): 1 13 
+Divisors of 13 (Optimized): 1 13 
+Divisors of 13 (Sorted Optimized): 1 13 
 
 === Test Case 3: Perfect Square ===
-Divisors of 16: 1 2 4 8 16
-Divisors of 16 (Optimized): 1 16 2 8 4
+Divisors of 16 (Naive): 1 2 4 8 16 
+Divisors of 16 (Optimized): 1 16 2 8 4 
+Divisors of 16 (Sorted Optimized): 1 2 4 8 16 
 
 === Test Case 4: Smallest Positive Number (Edge Case) ===
-Divisors of 1: 1
-Divisors of 1 (Optimized): 1
+Divisors of 1 (Naive): 1 
+Divisors of 1 (Optimized): 1 
+Divisors of 1 (Sorted Optimized): 1 
 
 === Test Case 5: Large Number (Performance Check) ===
-Divisors of 100 (Optimized): 1 100 2 50 4 25 5 20 10
+Divisors of 100 (Optimized): 1 100 2 50 4 25 5 20 10 
+Divisors of 100 (Sorted Optimized): 1 2 4 5 10 20 25 50 100 
 
 === Test Case 6: Negative Number (Invalid Input) ===
+No divisors exist for -12
+No divisors exist for -12
 No divisors exist for -12
 
 === Test Case 7: Zero (Edge Case) ===
 No divisors exist for 0
-
+No divisors exist for 0
+No divisors exist for 0
 
 ---
 
-## Comparison Between Approaches
+## Summary
 
-| Feature | Naive | Optimized |
-|----------|--------|------------|
-| Iteration Range | 1 → n | 1 → √n |
-| Output Order | Sorted | Unsorted (pairs) |
-| Handles Edge Cases | Yes | Yes |
-| Performance | Slower for large n | Much faster for large n |
+| Approach | Description | Time Complexity | Space Complexity |
+|-----------|--------------|------------------|------------------|
+| Naive | Checks all numbers from 1 to n | O(n) | O(1) |
+| Optimized | Uses divisor pairs and sqrt limit | O(√n) | O(1) |
+| List-Based | Stores divisors for sorted order | O(√n) | O(√n) |
 
 ---
