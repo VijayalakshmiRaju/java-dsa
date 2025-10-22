@@ -45,7 +45,6 @@ findGCDOptimized(54, 24)
 → findGCDOptimized(6, 0)
 → 6
 
-
 ---
 
 ## Time and Space Complexity  
