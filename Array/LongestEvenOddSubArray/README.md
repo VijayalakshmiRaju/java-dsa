@@ -1,9 +1,9 @@
-# Longest Even-Odd Subarray (Naive Approach)
+# Longest Even-Odd Subarray
 
 ## Problem Statement
-Given an integer array, find the length of the longest subarray where elements strictly alternate between even and odd numbers.
+Given an integer array, find the length of the longest contiguous subarray in which elements strictly alternate between even and odd numbers.
 
-If no such alternating subarray exists (for example, all elements are even or all are odd), return 0.
+If no such alternating subarray exists (for example, if all numbers are even or all are odd), return 0.
 
 ---
 
@@ -13,34 +13,56 @@ If no such alternating subarray exists (for example, all elements are even or al
 
 **Explanation:**  
 The longest alternating sequence is [14, 7, 8]  
-Alternation pattern: Even → Odd → Even
+Pattern: Even → Odd → Even
 
 **Output:**  
 3
 
 ---
 
-## Approach (Naive - O(n²))
-1. Iterate through every possible starting index `i`.
-2. For each starting point, move forward with index `j` while the even-odd pattern continues.
-3. If two consecutive elements have opposite parity, increase the count.
-4. Stop when the pattern breaks.
-5. Track the maximum alternating subarray length found.
-6. If no alternation exists, return 0.
+## Approaches
+
+### 1. Naive Approach (O(n²))
+- For every starting index `i`, expand the subarray forward using index `j`.
+- Continue expanding while consecutive elements have opposite parity (even/odd alternation).
+- Track the length of the longest alternating subarray found.
+- If no alternation exists, return 0.
+
+**Steps:**
+1. Outer loop picks the starting element.
+2. Inner loop expands forward until alternation breaks.
+3. Maintain the maximum count found.
+4. Return 0 if the longest count is only 1 (no alternation).
+
+---
+
+### 2. Optimized Approach (O(n))
+- Traverse the array once, checking if consecutive elements alternate.
+- If they do, increment the current alternating length.
+- Otherwise, reset the current length to 1.
+- Track the maximum length throughout.
+- Return 0 if the final maximum length is only 1.
+
+**Steps:**
+1. Initialize `curLen = 1` and `maxLen = 1`.
+2. For each pair `(arr[i-1], arr[i])`, check if parity differs.
+3. If alternating → increment `curLen`.
+4. Else → update `maxLen` and reset `curLen`.
+5. Finally, return `maxLen` (or 0 if no alternation).
 
 ---
 
 ## Logic Summary
 
-| Condition | Meaning |
-|------------|----------|
+| Condition | Description |
+|------------|--------------|
 | (arr[j-1] % 2 == 0 && arr[j] % 2 != 0) | Even → Odd transition |
 | (arr[j-1] % 2 != 0 && arr[j] % 2 == 0) | Odd → Even transition |
 | Otherwise | Pattern breaks |
 
 ---
 
-## Sample Output
+## Sample Test Outputs
 
 ---- Longest Even-Odd Subarray Length ----
 
@@ -55,30 +77,5 @@ Test Case 8: [2] → Longest Alternating Subarray Length = 0
 Test Case 9: [] → Longest Alternating Subarray Length = 0
 Test Case 10: [2, 3, 4, 5, 6, 7, 8, 9] → Longest Alternating Subarray Length = 8
 Test Case 11: [1, 2, 3, 4, 5, 6] → Longest Alternating Subarray Length = 6
-Test Case 12: [2, 3, 5, 7, 8, 10, 11, 12, 13] → Longest Alternating Subarray Length = 7
+Test Case 12: [2, 3, 5, 7, 8, 10, 11, 12, 13]→ Longest Alternating Subarray Length = 7
 
-
----
-
-## Time and Space Complexity
-
-| Complexity Type | Value | Explanation |
-|-----------------|--------|-------------|
-| Time Complexity | O(n²) | Two nested loops (i, j) |
-| Space Complexity | O(1) | Constant extra space used |
-
----
-
-## Edge Cases Covered
-
-| Case | Example | Expected Output |
-|------|----------|----------------|
-| All even numbers | [2, 4, 6, 8] | 0 |
-| All odd numbers | [1, 3, 5] | 0 |
-| Empty array | [] | 0 |
-| Single element | [2] | 0 |
-| Two alternating elements | [1, 2] | 2 |
-| Perfect alternation | [1, 2, 3, 4, 5] | 5 |
-| Alternation breaks midway | [10, 12, 14, 7, 8] | 3 |
-
----
