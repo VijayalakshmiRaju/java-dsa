@@ -79,3 +79,36 @@ Test Case 10: [2, 3, 4, 5, 6, 7, 8, 9] → Longest Alternating Subarray Length =
 Test Case 11: [1, 2, 3, 4, 5, 6] → Longest Alternating Subarray Length = 6
 Test Case 12: [2, 3, 5, 7, 8, 10, 11, 12, 13]→ Longest Alternating Subarray Length = 7
 
+
+---
+
+## Time and Space Complexity
+
+| Approach | Time Complexity | Space Complexity | Explanation |
+|-----------|-----------------|------------------|--------------|
+| Naive | O(n²) | O(1) | Nested loops for every start and end |
+| Optimized | O(n) | O(1) | Single-pass tracking of current streak |
+
+---
+
+## Edge Cases Covered
+
+| Case | Example | Expected Output |
+|------|----------|----------------|
+| All even numbers | [2, 4, 6, 8] | 0 |
+| All odd numbers | [1, 3, 5, 7] | 0 |
+| Empty array | [] | 0 |
+| Single element | [2] | 0 |
+| Two alternating numbers | [1, 2] | 2 |
+| Alternation breaks midway | [5, 10, 20, 6, 3, 8] | 3 |
+| Perfect alternation | [1, 2, 3, 4, 5, 6] | 6 |
+
+---
+
+## Output Convention
+- If the array has no alternating pair, output is **0**.
+- Otherwise, the length of the longest alternating subarray is displayed.
+- The output is formatted as:  
+  `Test Case X: [array] → Longest Alternating Subarray Length = Y`
+
+---
