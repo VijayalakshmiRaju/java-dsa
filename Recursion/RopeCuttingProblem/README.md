@@ -40,3 +40,22 @@ At each step, it reduces the rope length by one of these cut sizes and recursive
 | Recursive (Brute Force) | O(3^n) | O(n) | Each call can branch into three new recursive calls. |
 
 ---
+
+## Sample Test Cases
+
+| Test Case | Input (n, a, b, c) | Expected Output | Explanation |
+|------------|--------------------|-----------------|--------------|
+| 1 | (17, 10, 11, 3) | 3 | Rope can be cut as 11 + 3 + 3. |
+| 2 | (9, 2, 2, 2) | -1 | 9 cannot be made with pieces of length 2. |
+| 3 | (9, 2, 3, 4) | 4 | Rope can be cut as 3 + 2 + 2 + 2. |
+| 4 | (5, 5, 3, 2) | 2 | Rope can be cut as 3 + 2. |
+| 5 | (7, 5, 2, 6) | 2 | Rope can be cut as 5 + 2. |
+| 6 | (0, 2, 3, 4) | 0 | No cuts needed. |
+| 7 | (-5, 2, 3, 4) | -1 | Invalid rope length. |
+| 8 | (24, 12, 8, 4) | 6 | Rope can be cut as six pieces of length 4. |
+
+---
+
+## Summary
+
+- The recursive solution is straightforward and useful for understanding the problem logic.  
