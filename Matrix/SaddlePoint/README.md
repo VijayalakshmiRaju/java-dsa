@@ -11,7 +11,6 @@ Given the matrix:
 7 8 9
 1 2 3
 
-
 - Minimum elements by row → [4, 7, 1]  
 - Checking corresponding columns →  
   - 4 → not max in its column  
@@ -32,6 +31,17 @@ Hence, the saddle point is **7**.
 
 ---
 
+## Algorithm Steps
+
+1. Initialize the number of rows and columns.  
+2. For each row:
+   - Find the minimum element and its column index.
+   - For that column, check if this element is the largest.
+3. If a saddle point is found, return it immediately.
+4. If the entire matrix is traversed without finding one, return `-1`.
+
+---
+
 ## Time and Space Complexity
 
 | Operation | Complexity |
@@ -42,3 +52,21 @@ Hence, the saddle point is **7**.
 | **Space Complexity** | **O(1)** |
 
 ---
+
+## Example Output
+
+Matrix:
+4 5 6
+7 8 9
+1 2 3
+Saddle Point Found: 7
+
+Matrix:
+3 8 4
+9 6 7
+5 2 1
+No Saddle Point Found
+
+Matrix:
+42
+Saddle Point Found: 42
