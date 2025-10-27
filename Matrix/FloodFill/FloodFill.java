@@ -26,14 +26,6 @@ public class FloodFill {
 
     /**
      * Recursive helper method that fills adjacent pixels.
-     *
-     * @param screen   2D matrix of colors
-     * @param x        current row index
-     * @param y        current column index
-     * @param oldColor color to be replaced
-     * @param newColor new color
-     * @param rows     total rows in screen
-     * @param cols     total columns in screen
      */
     private static void fill(int[][] screen, int x, int y, int oldColor, int newColor, int rows, int cols) {
         // Base condition: return if (x,y) is outside screen bounds
@@ -55,11 +47,33 @@ public class FloodFill {
     }
 
     /**
-     * Utility function to print the screen matrix neatly.
+     * Utility function to print a 2D screen neatly.
      */
     private static void printScreen(int[][] screen) {
         for (int[] row : screen)
             System.out.println(Arrays.toString(row));
+    }
+
+    /**
+     * Utility function to clone a 2D array (so original can be compared).
+     */
+    private static int[][] cloneScreen(int[][] screen) {
+        int[][] copy = new int[screen.length][];
+        for (int i = 0; i < screen.length; i++) {
+            copy[i] = screen[i].clone();
+        }
+        return copy;
+    }
+
+    /**
+     * Utility to print side-by-side comparison of original and modified screens.
+     */
+    private static void printComparison(int[][] original, int[][] modified) {
+        System.out.println("Original Screen\t\t\t\tModified Screen");
+        for (int i = 0; i < original.length; i++) {
+            System.out.printf("%-30s", Arrays.toString(original[i]));
+            System.out.println(Arrays.toString(modified[i]));
+        }
         System.out.println();
     }
 
@@ -67,7 +81,7 @@ public class FloodFill {
      * Main method with multiple test cases (including edge cases).
      */
     public static void main(String[] args) {
-        // Test Case 1: Example from problem statement
+        // ---------- Test Case 1 ----------
         int[][] screen1 = {
                 {1, 1, 1, 1, 1, 1, 1, 1},
                 {1, 1, 1, 1, 1, 1, 0, 0},
@@ -78,47 +92,51 @@ public class FloodFill {
                 {1, 1, 1, 1, 1, 2, 1, 1},
                 {1, 1, 1, 1, 1, 2, 2, 1}
         };
-
-        System.out.println("Original Screen:");
-        printScreen(screen1);
-
+        int[][] original1 = cloneScreen(screen1);
         int x = 4, y = 4, newColor = 3;
         floodFill(screen1, x, y, newColor);
 
-        System.out.println("After Flood Fill at (" + x + "," + y + ") with color " + newColor + ":");
-        printScreen(screen1);
+        System.out.println("========== Test Case 1 ==========");
+        System.out.println("Flood Fill at (" + x + ", " + y + ") with new color " + newColor + "\n");
+        printComparison(original1, screen1);
 
 
-        // Test Case 2: Fill in a single-color screen
+        // ---------- Test Case 2 ----------
         int[][] screen2 = {
                 {1, 1, 1},
                 {1, 1, 1},
                 {1, 1, 1}
         };
+        int[][] original2 = cloneScreen(screen2);
         floodFill(screen2, 1, 1, 5);
-        System.out.println("Test Case 2: Entire screen filled with 5");
-        printScreen(screen2);
+        System.out.println("========== Test Case 2 ==========");
+        System.out.println("Entire single-color screen filled with 5\n");
+        printComparison(original2, screen2);
 
 
-        // Test Case 3: Click on a region that is already of the target color
+        // ---------- Test Case 3 ----------
         int[][] screen3 = {
                 {2, 2, 2},
                 {2, 2, 2},
                 {2, 2, 2}
         };
+        int[][] original3 = cloneScreen(screen3);
         floodFill(screen3, 0, 0, 2);
-        System.out.println("Test Case 3: No change since new color = old color");
-        printScreen(screen3);
+        System.out.println("========== Test Case 3 ==========");
+        System.out.println("No change (oldColor == newColor)\n");
+        printComparison(original3, screen3);
 
 
-        // Test Case 4: Non-contiguous color fill
+        // ---------- Test Case 4 ----------
         int[][] screen4 = {
                 {1, 1, 0, 0},
                 {1, 0, 0, 1},
                 {1, 1, 1, 0}
         };
+        int[][] original4 = cloneScreen(screen4);
         floodFill(screen4, 0, 0, 9);
-        System.out.println("Test Case 4: Fill top-left connected 1's with 9");
-        printScreen(screen4);
+        System.out.println("========== Test Case 4 ==========");
+        System.out.println("Fill top-left connected 1's with 9\n");
+        printComparison(original4, screen4);
     }
 }
