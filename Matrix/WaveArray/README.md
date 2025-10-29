@@ -61,3 +61,30 @@ Output : [2, 1, 10, 5, 49, 23, 90]
 | **Auxiliary Space** | **O(1)** (in-place) |
 
 ---
+
+## Edge Cases Considered
+
+| Case | Example | Expected Behavior |
+|------|----------|-------------------|
+| Single element | `[42]` | No swap needed |
+| Two elements | `[100, 20]` | Swapped if needed |
+| All elements equal | `[4, 4, 4, 4]` | Remains same |
+| Already sorted | `[1, 2, 3, 4, 5]` | Still becomes valid wave |
+| Reverse sorted | `[10, 9, 8, 7]` | Sorted first, then wave |
+| Negative numbers | `[-5, -10, 0, 5]` | Works correctly |
+| Empty array | `[]` | No operation performed |
+
+---
+
+## Example Output
+========== General Case ==========
+Original Array: [10, 90, 49, 2, 1, 5, 23]
+Wave Array : [2, 1, 10, 5, 49, 23, 90]
+
+========== Includes Negative Numbers ==========
+Original Array: [-5, -10, 0, 5, 10]
+Wave Array : [-5, -10, 5, 0, 10]
+
+========== Single Element ==========
+Original Array: [42]
+Wave Array : [42]
