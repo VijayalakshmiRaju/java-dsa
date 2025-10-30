@@ -11,22 +11,21 @@ public class ReverseArrayInGroups {
      *
      * Logic:
      * - Traverse the array in chunks of size 'k'.
-     * - For each chunk, reverse the subarray from index 'i' to 'i + k - 1' (or the array end if fewer elements remain).
+     * - For each chunk, reverse the subarray from index 'i' to 'i + k - 1'
+     *   (or until the end if remaining elements are less than k).
      * - Swap elements from both ends moving toward the center.
      *
      * Time Complexity: O(n)
-     * Space Complexity: O(1) — in-place reversal
+     * Space Complexity: O(1) — In-place reversal
      */
     public static void reverseArrayInGroups(int[] arr, int k)
     {
         int n = arr.length;
 
-        // Traverse array in groups of 'k' elements
         for (int i = 0; i < n; i += k) {
             int left = i;
-            int right = Math.min(i + k - 1, n - 1); // handle case when remaining elements < k
+            int right = Math.min(i + k - 1, n - 1); // handle leftover group smaller than k
 
-            // Reverse current group
             while (left < right) {
                 int temp = arr[left];
                 arr[left] = arr[right];
@@ -39,67 +38,32 @@ public class ReverseArrayInGroups {
 
     public static void main(String[] args)
     {
-        // ---------- Test Case 1: Normal Case ----------
-        int[] arr1 = {1, 2, 3, 4, 5, 6, 7, 8};
-        int k1 = 3;
-        reverseArrayInGroups(arr1, k1);
-        System.out.println("Test Case 1:");
-        System.out.println("Input: [1, 2, 3, 4, 5, 6, 7, 8], k = 3");
-        System.out.println("Output: " + Arrays.toString(arr1));
-        System.out.println("---------------------------------------");
+        // Each test case: { array, k }
+        Object[][] testCases = {
+                { new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 3 },
+                { new int[]{10, 20, 30, 40}, 1 },
+                { new int[]{5, 10, 15}, 5 },
+                { new int[]{1, 2, 3, 4, 5, 6, 7}, 4 },
+                { new int[]{42}, 2 },
+                { new int[]{}, 3 },
+                { new int[]{9, 8, 7, 6, 5}, 5 }
+        };
 
-        // ---------- Test Case 2: k = 1 (no change expected) ----------
-        int[] arr2 = {10, 20, 30, 40};
-        int k2 = 1;
-        reverseArrayInGroups(arr2, k2);
-        System.out.println("Test Case 2:");
-        System.out.println("Input: [10, 20, 30, 40], k = 1");
-        System.out.println("Output: " + Arrays.toString(arr2));
-        System.out.println("---------------------------------------");
+        System.out.println("===== Reverse Array in Groups - Test Results =====");
 
-        // ---------- Test Case 3: k > array length (entire array reversed) ----------
-        int[] arr3 = {5, 10, 15};
-        int k3 = 5;
-        reverseArrayInGroups(arr3, k3);
-        System.out.println("Test Case 3:");
-        System.out.println("Input: [5, 10, 15], k = 5");
-        System.out.println("Output: " + Arrays.toString(arr3));
-        System.out.println("---------------------------------------");
+        // Loop through all test cases
+        for (int i = 0; i < testCases.length; i++) {
+            int[] arr = ((int[]) testCases[i][0]).clone(); // clone to avoid mutation between cases
+            int k = (int) testCases[i][1];
 
-        // ---------- Test Case 4: Array length not multiple of k ----------
-        int[] arr4 = {1, 2, 3, 4, 5, 6, 7};
-        int k4 = 4;
-        reverseArrayInGroups(arr4, k4);
-        System.out.println("Test Case 4:");
-        System.out.println("Input: [1, 2, 3, 4, 5, 6, 7], k = 4");
-        System.out.println("Output: " + Arrays.toString(arr4));
-        System.out.println("---------------------------------------");
+            System.out.println("\nTest Case " + (i + 1) + ":");
+            System.out.println("Input Array: " + Arrays.toString((int[]) testCases[i][0]));
+            System.out.println("Group Size (k): " + k);
 
-        // ---------- Test Case 5: Single-element array ----------
-        int[] arr5 = {42};
-        int k5 = 2;
-        reverseArrayInGroups(arr5, k5);
-        System.out.println("Test Case 5:");
-        System.out.println("Input: [42], k = 2");
-        System.out.println("Output: " + Arrays.toString(arr5));
-        System.out.println("---------------------------------------");
+            reverseArrayInGroups(arr, k);
 
-        // ---------- Test Case 6: Empty array ----------
-        int[] arr6 = {};
-        int k6 = 3;
-        reverseArrayInGroups(arr6, k6);
-        System.out.println("Test Case 6:");
-        System.out.println("Input: [], k = 3");
-        System.out.println("Output: " + Arrays.toString(arr6));
-        System.out.println("---------------------------------------");
-
-        // ---------- Test Case 7: k = array length ----------
-        int[] arr7 = {9, 8, 7, 6, 5};
-        int k7 = 5;
-        reverseArrayInGroups(arr7, k7);
-        System.out.println("Test Case 7:");
-        System.out.println("Input: [9, 8, 7, 6, 5], k = 5");
-        System.out.println("Output: " + Arrays.toString(arr7));
-        System.out.println("---------------------------------------");
+            System.out.println("Output Array: " + Arrays.toString(arr));
+            System.out.println("---------------------------------------");
+        }
     }
 }
