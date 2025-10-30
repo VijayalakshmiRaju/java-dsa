@@ -50,6 +50,17 @@ This approach performs **in-place reversal**, meaning no extra array is created.
 
 ---
 
+## Edge Cases
+| Case | Input | Expected Output | Explanation |
+|------|--------|----------------|--------------|
+| Group size = 1 | `[10, 20, 30, 40]`, k = 1 | `[10, 20, 30, 40]` | No change as each group has one element |
+| Group size > array length | `[5, 10, 15]`, k = 5 | `[15, 10, 5]` | Entire array reversed |
+| Array length not multiple of k | `[1, 2, 3, 4, 5, 6, 7]`, k = 4 | `[4, 3, 2, 1, 7, 6, 5]` | Last group smaller than k |
+| Single element array | `[42]`, k = 2 | `[42]` | No change |
+| Empty array | `[]`, k = 3 | `[]` | No operation performed |
+
+---
+
 ## Time and Space Complexity
 - **Time Complexity:** O(n)  
   Each element is swapped at most once.
@@ -58,3 +69,41 @@ This approach performs **in-place reversal**, meaning no extra array is created.
   The reversal is performed in place, using constant extra space.
 
 ---
+
+## Sample Output
+===== Reverse Array in Groups - Test Results =====
+
+Test Case 1:
+Input Array: [1, 2, 3, 4, 5, 6, 7, 8]
+Group Size (k): 3
+Output Array: [3, 2, 1, 6, 5, 4, 8, 7]
+
+Test Case 2:
+Input Array: [10, 20, 30, 40]
+Group Size (k): 1
+Output Array: [10, 20, 30, 40]
+
+Test Case 3:
+Input Array: [5, 10, 15]
+Group Size (k): 5
+Output Array: [15, 10, 5]
+
+Test Case 4:
+Input Array: [1, 2, 3, 4, 5, 6, 7]
+Group Size (k): 4
+Output Array: [4, 3, 2, 1, 7, 6, 5]
+
+Test Case 5:
+Input Array: [42]
+Group Size (k): 2
+Output Array: [42]
+
+Test Case 6:
+Input Array: []
+Group Size (k): 3
+Output Array: []
+
+Test Case 7:
+Input Array: [9, 8, 7, 6, 5]
+Group Size (k): 5
+Output Array: [5, 6, 7, 8, 9]
