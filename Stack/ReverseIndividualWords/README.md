@@ -24,6 +24,27 @@ Output : "emocleW ot eht bulc"
 
 ---
 
+## Algorithm Steps
+1. Initialize an empty `Stack<Character>` and a `StringBuilder result`.  
+2. Traverse each character in the string:  
+   - If the character is not a space, push it onto the stack.  
+   - If the character is a space:  
+     - Pop all characters from the stack and append to the result.  
+     - Append the space to the result.  
+3. After the loop, pop all remaining characters from the stack (for the last word).  
+4. Return the final string.
+
+---
+
+## Example
+**Input**
+Welcome to the club
+
+**Output**
+emocleW ot eht bulc
+
+---
+
 ## Test Cases
 | Test Case | Input | Expected Output |
 |------------|--------|----------------|
