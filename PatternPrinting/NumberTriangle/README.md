@@ -41,11 +41,31 @@ For `n = 4`, the output should be:
 
 ---
 
+## Example Test Cases
+
+| Test Case | Input (`n`) | Expected Behavior |
+|------------|--------------|-------------------|
+| 1 | 7 | Prints 7-row right-aligned number triangle |
+| 2 | 1 | Prints a single “1” |
+| 3 | 4 | Prints a 4-row triangle |
+| 4 | 0 | Displays “Invalid input” message |
+| 5 | -3 | Displays “Invalid input” message |
+
+---
+
 ## Time & Space Complexity
 
 | Complexity | Description |
 |-------------|--------------|
 | **Time Complexity** | O(n²) — Two nested loops (rows × numbers per row) |
 | **Space Complexity** | O(1) — Constant extra space used |
+
+---
+
+## Edge Cases Considered
+
+- `n = 0` → No rows printed.  
+- `n < 0` → Invalid input message displayed.  
+- `n = 1` → Single-row output handled correctly.
 
 ---
