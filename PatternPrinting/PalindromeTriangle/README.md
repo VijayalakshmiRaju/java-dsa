@@ -55,6 +55,58 @@ n = 4
 
 ---
 
+## Example Test Cases
+
+| Test Case | Input (n) | Description |
+|------------|------------|-------------|
+| 1 | 6 | Standard case |
+| 2 | 1 | Smallest valid input |
+| 3 | 4 | Medium-sized pattern |
+| 4 | 9 | Large pattern for spacing validation |
+| 5 | 0 | Edge case – invalid input |
+| 6 | -3 | Edge case – invalid input |
+
+---
+
+## Sample Output
+
+Test Case 1: n = 6
+          1 
+        2 1 2 
+      3 2 1 2 3 
+    4 3 2 1 2 3 4 
+  5 4 3 2 1 2 3 4 5 
+6 5 4 3 2 1 2 3 4 5 6 
+-----------------------------
+Test Case 2: n = 1
+1 
+-----------------------------
+Test Case 3: n = 4
+      1 
+    2 1 2 
+  3 2 1 2 3 
+4 3 2 1 2 3 4 
+-----------------------------
+Test Case 4: n = 9
+                1 
+              2 1 2 
+            3 2 1 2 3 
+          4 3 2 1 2 3 4 
+        5 4 3 2 1 2 3 4 5 
+      6 5 4 3 2 1 2 3 4 5 6 
+    7 6 5 4 3 2 1 2 3 4 5 6 7 
+  8 7 6 5 4 3 2 1 2 3 4 5 6 7 8 
+9 8 7 6 5 4 3 2 1 2 3 4 5 6 7 8 9 
+-----------------------------
+Test Case 5: n = 0
+Invalid input! Number must be positive.
+-----------------------------
+Test Case 6: n = -3
+Invalid input! Number must be positive.
+-----------------------------
+
+---
+
 ## Time and Space Complexity
 
 | Complexity | Explanation |
