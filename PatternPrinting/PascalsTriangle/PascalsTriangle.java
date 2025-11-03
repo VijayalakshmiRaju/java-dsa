@@ -28,30 +28,14 @@ public class PascalsTriangle {
 
     public static void main(String[] args)
     {
-        // Test Case 1: Typical case
-        System.out.println("Test Case 1: n = 5");
-        printPattern(5);
-        System.out.println("-------------------------");
+        // Define an array of test cases (including edge cases)
+        int[] testCases = {5, 1, 6, 0, -3};
 
-        // Test Case 2: Smallest non-trivial case
-        System.out.println("Test Case 2: n = 1");
-        printPattern(1);
-        System.out.println("-------------------------");
-
-        // Test Case 3: Moderate case for visual clarity
-        System.out.println("Test Case 3: n = 6");
-        printPattern(6);
-        System.out.println("-------------------------");
-
-        // Test Case 4: Edge Case (n = 0)
-        // Should print nothing or a message indicating no rows
-        System.out.println("Test Case 4: n = 0 (Edge Case)");
-        if (0 <= 0)
-            System.out.println("No rows to display.\n-------------------------");
-
-        // Test Case 5: Edge Case (Negative input)
-        System.out.println("Test Case 5: n = -3 (Edge Case)");
-        if (-3 <= 0)
-            System.out.println("Invalid input. Number of rows must be positive.\n-------------------------");
+        // Iterate through all test cases using a for loop
+        for (int i = 0; i < testCases.length; i++) {
+            System.out.println("Test Case " + (i + 1) + ": n = " + testCases[i]);
+            printPattern(testCases[i]);
+            System.out.println("-------------------------");
+        }
     }
 }
