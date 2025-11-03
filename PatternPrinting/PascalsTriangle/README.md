@@ -62,3 +62,65 @@ Example for `n = 5`:
 | **Space Complexity** | O(1) — Only a few variables are used; no extra data structures. |
 
 ---
+
+## Example Output
+
+Test Case 1:
+Input: n = 5
+Output:
+    1 
+   1 1 
+  1 2 1 
+ 1 3 3 1 
+1 4 6 4 1 
+
+Test Case 2:
+Input: n = 1
+Output:
+1 
+
+Test Case 3:
+Input: n = 6
+Output:
+     1 
+    1 1 
+   1 2 1 
+  1 3 3 1 
+ 1 4 6 4 1 
+1 5 10 10 5 1 
+
+Edge Case 1:
+Input: n = 0
+Output:
+Invalid input. Number of rows must be positive.
+
+Edge Case 2:
+Input: n = -3
+Output:
+Invalid input. Number of rows must be positive.
+
+## Sample
+Test Case 1: n = 5
+    1 
+   1 1 
+  1 2 1 
+ 1 3 3 1 
+1 4 6 4 1 
+-------------------------
+Test Case 2: n = 1
+1 
+-------------------------
+Test Case 3: n = 6
+     1 
+    1 1 
+   1 2 1 
+  1 3 3 1 
+ 1 4 6 4 1 
+1 5 10 10 5 1 
+-------------------------
+Test Case 4: n = 0
+Invalid input. Number of rows must be positive.
+-------------------------
+Test Case 5: n = -3
+Invalid input. Number of rows must be positive.
+-------------------------
