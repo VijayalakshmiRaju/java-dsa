@@ -28,35 +28,16 @@ public class ButterflyPattern {
     }
 
     public static void main(String[] args) {
+        // Test cases to validate butterfly pattern behavior for different inputs
+        int[] testCases = {1, 3, 5, 6};
 
         System.out.println("=== BUTTERFLY PATTERN TEST CASES ===\n");
 
-        // Test Case 1: Smallest valid input
-        int n1 = 1;
-        System.out.println("Test Case 1: n = " + n1);
-        System.out.println("--------------------------------");
-        printButterfly(n1);
-        System.out.println("--------------------------------\n");
-
-        // Test Case 2: Moderate input
-        int n2 = 3;
-        System.out.println("Test Case 2: n = " + n2);
-        System.out.println("--------------------------------");
-        printButterfly(n2);
-        System.out.println("--------------------------------\n");
-
-        // Test Case 3: Larger input
-        int n3 = 5;
-        System.out.println("Test Case 3: n = " + n3);
-        System.out.println("--------------------------------");
-        printButterfly(n3);
-        System.out.println("--------------------------------\n");
-
-        // Test Case 4: Even number of rows
-        int n4 = 6;
-        System.out.println("Test Case 4: n = " + n4);
-        System.out.println("--------------------------------");
-        printButterfly(n4);
-        System.out.println("--------------------------------\n");
+        for (int n : testCases) {
+            System.out.println("Test Case: n = " + n);
+            System.out.println("--------------------------------");
+            printButterfly(n);
+            System.out.println("--------------------------------\n");
+        }
     }
 }
