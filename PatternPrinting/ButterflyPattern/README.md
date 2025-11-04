@@ -47,7 +47,39 @@ Example for `n = 4`:
 
 ---
 
-## Time and Space Complexity
+## Test Cases
+
+| Test Case | Input (`n`) | Expected Output |
+|------------|--------------|-----------------|
+| 1 | 1 | Prints a 2-row butterfly with 2 stars per row |
+| 2 | 3 | Prints a symmetric butterfly with 6 columns |
+| 3 | 5 | Prints a butterfly pattern with 10 columns |
+| 4 | 6 | Prints a butterfly pattern with 12 columns |
+| 5 | 0 | Prints: `Invalid input. Number of rows must be positive.` |
+| 6 | -2 | Prints: `Invalid input. Number of rows must be positive.` |
+
+---
+
+## Time and Space Complexity Analysis
+
+### Time Complexity
+**O(n²)**  
+- The pattern generation involves **two nested loops**:
+  - Outer loop runs `n` times (for each row).
+  - Inner loop runs up to `2 * n` times (for each column).
+- Therefore, total operations ≈ `n × (2n)` ⇒ **O(n²)**.
+
+---
+
+### Space Complexity
+**O(1)**  
+- The program prints the pattern **directly to the console**.
+- No additional data structures are used.
+- Only a few loop control variables occupy memory ⇒ **Constant space usage**.
+
+---
+
+### Time and Space Complexity
 
 | Complexity Type | Description |
 |------------------|-------------|
